@@ -3,7 +3,7 @@
  "version": "0.9.0",
  "displayName": "Dialog Builder",
  "description": "test",
- "unity": "2022.3.44f1",
+ "unity": "2022.3",
  "dependencies": {
   "com.unity.textmeshpro": "3.0.6"
  },
