@@ -1,0 +1,118 @@
+#node-border {
+    background-color: rgb(58, 58, 58);
+    border-left-color: rgb(41, 41, 41);
+    border-right-color: rgb(41, 41, 41);
+    border-top-color: rgb(41, 41, 41);
+    border-bottom-color: rgb(41, 41, 41);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#input {
+    align-items: center;
+    background-color: rgb(79, 79, 79);
+}
+
+#output {
+    align-items: center;
+    background-color: rgb(80, 80, 80);
+    -unity-slice-top: 0;
+    height: auto;
+}
+
+.node {
+    width: 120px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+#title {
+    -unity-font-style: bold;
+}
+
+.action #input {
+}
+
+.composite #input {
+}
+
+.decorator #input {
+}
+
+.root #input {
+    min-height: 20px;
+}
+
+#node-state {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-slice-left: 5;
+    -unity-slice-top: 5;
+    -unity-slice-right: 5;
+    -unity-slice-bottom: 5;
+}
+
+.running #node-state {
+    background-color: rgba(32, 79, 173, 0);
+    -unity-slice-left: 3;
+    -unity-slice-top: 3;
+    -unity-slice-right: 3;
+    -unity-slice-bottom: 3;
+}
+
+.success #node-state {
+    background-color: rgba(45, 171, 30, 0);
+    -unity-slice-left: 3;
+    -unity-slice-top: 3;
+    -unity-slice-right: 3;
+    -unity-slice-bottom: 3;
+}
+
+.failure #node-state {
+    background-color: rgba(188, 42, 42, 0);
+    -unity-slice-left: 3;
+    -unity-slice-top: 3;
+    -unity-slice-right: 3;
+    -unity-slice-bottom: 3;
+}
+
+:hover > #node-border {
+    border-left-color: rgb(13, 144, 255);
+    border-right-color: rgb(13, 144, 255);
+    border-top-color: rgb(13, 144, 255);
+    border-bottom-color: rgb(13, 144, 255);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+}
+
+:selected > #node-border {
+    border-left-color: rgb(13, 144, 255);
+    border-right-color: rgb(13, 144, 255);
+    border-top-color: rgb(13, 144, 255);
+    border-bottom-color: rgb(13, 144, 255);
+}
+
+.textNode #TextField {
+    display: flex;
+}
+
+.neutral #node-border {
+    border-left-color: rgb(0, 10, 219);
+    border-right-color: rgb(0, 10, 219);
+    border-top-color: rgb(0, 10, 219);
+    border-bottom-color: rgb(0, 10, 219);
+}
