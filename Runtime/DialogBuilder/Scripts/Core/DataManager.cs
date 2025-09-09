@@ -8,10 +8,10 @@ namespace DialogBuilder.Scripts.Core
     {
         public string CurrentCharacterName;
         public int CurrentPopularity;
-
         public CharacterData CurrentCharacter => _currentCharacter;
-
-        private Dictionary<CharacterData, RelationshipData> Characters;
+        public List<CharacterData> CharactersTemp;
+        
+        private Dictionary<CharacterData, RelationshipData> Characters = new();
         private CharacterData _currentCharacter;
         
         private void Awake()
@@ -27,12 +27,11 @@ namespace DialogBuilder.Scripts.Core
 
         private void LoadCharacters()
         {
-            Characters = new Dictionary<CharacterData, RelationshipData>();
-            CharacterData[] loadedCharacters = Resources.LoadAll<CharacterData>("ScriptableObjects");
+            // CharacterData[] loadedCharacters = Resources.LoadAll<CharacterData>("ScriptableObjects");
         
-            _currentCharacter = loadedCharacters[Random.Range(0, loadedCharacters.Length)];
+            _currentCharacter = CharactersTemp[Random.Range(0, CharactersTemp.Count)];
             
-            foreach (CharacterData character in loadedCharacters)
+            foreach (CharacterData character in CharactersTemp)
             {
                 RelationshipData relationshipData = new RelationshipData
                 {

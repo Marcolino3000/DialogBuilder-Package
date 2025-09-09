@@ -18,7 +18,7 @@ namespace DialogBuilder.Scripts.UIDocuments
         public Node Node;
         public CustomPort InputPort;
         public CustomPort OutputPort;
-        public NodeView(Node node) : base("Assets/DialogBuilder/Scripts/UIDocuments/NodeView.uxml")
+        public NodeView(Node node) : base("Assets/Package/Runtime/DialogBuilder/Scripts/UIDocuments/NodeView.uxml")
         {
             Node = node;
             title = node.name;

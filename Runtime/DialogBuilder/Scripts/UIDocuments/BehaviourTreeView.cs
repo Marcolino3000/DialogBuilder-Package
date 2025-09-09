@@ -26,7 +26,7 @@ namespace DialogBuilder.Scripts.UIDocuments
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
             
-            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/DialogBuilder/Scripts/UIDocuments/BehaviourTreeEditor.uss");
+            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Package/Runtime/DialogBuilder/Scripts/UIDocuments/BehaviourTreeEditor.uss");
             styleSheets.Add(styleSheet);
             
             Undo.undoRedoPerformed += OnUndoRedoPerformed;
