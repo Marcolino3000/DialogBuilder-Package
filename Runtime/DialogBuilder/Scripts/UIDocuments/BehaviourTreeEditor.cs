@@ -8,7 +8,8 @@ namespace DialogBuilder.Scripts.UIDocuments
 {
     public class BehaviourTreeEditor : EditorWindow
     {
-        // [SerializeField] private VisualTreeAsset m_VisualTreeAsset = default;
+        // [SerializeField] private VisualTreeAsset visualTree;
+
 
         private BehaviourTreeView _treeView;
         private InspectorView _inspectorView;
@@ -43,7 +44,10 @@ namespace DialogBuilder.Scripts.UIDocuments
         {
             VisualElement root = rootVisualElement;
         
-            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/com.cod.dialog-builder/Runtime/DialogBuilder/Scripts/UIDocuments/BehaviourTreeEditor.uxml");
+            var packageInfo = UnityEditor.PackageManager.PackageInfo.FindForAssembly(System.Reflection.Assembly.GetExecutingAssembly());
+            string packagePath = packageInfo?.assetPath ?? "Assets/com.cod.dialog-builder";
+
+            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"{packagePath}/Runtime/DialogBuilder/Scripts/UIDocuments/BehaviourTreeEditor.uxml");
             visualTree.CloneTree(root);
         
             var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/com.cod.dialog-builder/Runtime/DialogBuilder/Scripts/UIDocuments/BehaviourTreeEditor.uss");
