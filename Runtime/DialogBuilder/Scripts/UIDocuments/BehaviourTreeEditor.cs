@@ -43,10 +43,10 @@ namespace DialogBuilder.Scripts.UIDocuments
         {
             VisualElement root = rootVisualElement;
         
-            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Package/Runtime/DialogBuilder/Scripts/UIDocuments/BehaviourTreeEditor.uxml");
+            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/com.cod.dialog-builder/Runtime/DialogBuilder/Scripts/UIDocuments/BehaviourTreeEditor.uxml");
             visualTree.CloneTree(root);
         
-            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Package/Runtime/DialogBuilder/Scripts/UIDocuments/BehaviourTreeEditor.uss");
+            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/com.cod.dialog-builder/Runtime/DialogBuilder/Scripts/UIDocuments/BehaviourTreeEditor.uss");
             root.styleSheets.Add(styleSheet);
 
             _inspectorView = root.Q<InspectorView>();

@@ -53,7 +53,7 @@ namespace DialogBuilder.Scripts.UIDocuments
          var shortenedText = newText.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries).First(); 
          shortenedText = shortenedText.Substring(0, Math.Min(shortenedText.Length, maxPreviewLength));
          
-         if (shortenedText.Length > maxPreviewLength)
+         if (shortenedText.Length == maxPreviewLength)
              shortenedText += "...";
          
          return shortenedText;

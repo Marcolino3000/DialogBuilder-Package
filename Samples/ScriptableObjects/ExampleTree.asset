@@ -38,7 +38,7 @@ MonoBehaviour:
   Blackboard:
     characterData: {fileID: 0}
   DialogLine: 'Was gibt''s denn? '
-  TextPreview: Was gibt's denn?...
+  TextPreview: Was gibt's denn?
   Children:
   - {fileID: -6623330606900721193}
   - {fileID: -4954209596611156742}
@@ -198,8 +198,8 @@ MonoBehaviour:
   Position: {x: 217, y: 30.000017}
   Blackboard:
     characterData: {fileID: 0}
-  DialogLine: 
-  TextPreview: dffsdf
+  DialogLine: hallo ich bin marlele
+  TextPreview: hallo ich bin ma...
   Children:
   - {fileID: 8214506094242630894}
   - {fileID: -7150211719925791683}
