@@ -20,21 +20,7 @@ namespace DialogBuilder.Scripts.UIDocuments
         public CustomPort OutputPort;
         public NodeView(Node node) : base("Packages/com.cod.dialog-builder//Runtime/DialogBuilder/Scripts/UIDocuments/NodeView.uxml")
         {
-            var packageInfo = UnityEditor.PackageManager.PackageInfo.FindForAssembly(System.Reflection.Assembly.GetExecutingAssembly());
-            string packagePath = packageInfo?.assetPath ?? "Assets/com.cod.dialog-builder";
-    
-            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Packages/com.cod.dialog-builder//Runtime/DialogBuilder/Scripts/UIDocuments/NodeView.uxml");
-            if (visualTree != null)
-            {
-                visualTree.CloneTree(this);
-            }
-            else
-            {
-                Debug.LogError($"Could not load NodeView.uxml at path: {packagePath}/Runtime/DialogBuilder/Scripts/UIDocuments/NodeView.uxml");
-            }
-            
             Node = node;
-            // title = node.name;
             viewDataKey = node.Guid;
 
             style.left = node.Position.x;
@@ -51,10 +37,8 @@ namespace DialogBuilder.Scripts.UIDocuments
             var textField = this.Q<Label>("title-label");
             textField.bindingPath = "TextPreview";
             textField.Bind(new SerializedObject(node));
-            // textField.RegisterValueChangedCallback(evt => node.LinePreview);
 
-            // node.DialogLineChanged += HandleDialogLineChanged;
-            node.RegisterCallback(HandleDialogLineChanged);
+            // node.RegisterCallback(HandleDialogLineChanged);
         }
 
         private void HandleDialogLineChanged(string dialogLine)
