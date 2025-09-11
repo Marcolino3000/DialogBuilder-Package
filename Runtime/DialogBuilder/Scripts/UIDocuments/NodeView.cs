@@ -18,7 +18,7 @@ namespace DialogBuilder.Scripts.UIDocuments
         public Node Node;
         public CustomPort InputPort;
         public CustomPort OutputPort;
-        public NodeView(Node node) : base("Assets/com.cod.dialog-builder/Runtime/DialogBuilder/Scripts/UIDocuments/NodeView.uxml")
+        public NodeView(Node node)
         {
             var packageInfo = UnityEditor.PackageManager.PackageInfo.FindForAssembly(System.Reflection.Assembly.GetExecutingAssembly());
             string packagePath = packageInfo?.assetPath ?? "Assets/com.cod.dialog-builder";
