@@ -26,11 +26,11 @@ namespace DialogBuilder.Scripts.UIDocuments
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
             
-            var packageInfo = UnityEditor.PackageManager.PackageInfo.FindForAssembly(System.Reflection.Assembly.GetExecutingAssembly());
-            string packagePath = packageInfo?.assetPath ?? "Assets/com.cod.dialog-builder";
+            // var packageInfo = UnityEditor.PackageManager.PackageInfo.FindForAssembly(System.Reflection.Assembly.GetExecutingAssembly());
+            // string packagePath = packageInfo?.assetPath ?? "Assets/com.cod.dialog-builder";
 
             
-            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>($"{packagePath}/Runtime/DialogBuilder/Scripts/UIDocuments/BehaviourTreeEditor.uss");
+            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>($"Packages/com.cod.dialog-builder/Runtime/DialogBuilder/Scripts/UIDocuments/BehaviourTreeEditor.uss");
             styleSheets.Add(styleSheet);
             
             Undo.undoRedoPerformed += OnUndoRedoPerformed;

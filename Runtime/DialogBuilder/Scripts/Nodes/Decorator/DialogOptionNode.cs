@@ -26,7 +26,7 @@ namespace DialogBuilder.Scripts.Nodes.Decorator
             {
                  Paragraphs.Add(new Tuple<string, float>(
                      paragraph, 
-                     paragraph.Length * 0.08f + 0.7f));
+                     paragraph.Length * 0.06f + 0.8f));
             }
         }
         public override DialogOptionNode[] GetChildNodes()
