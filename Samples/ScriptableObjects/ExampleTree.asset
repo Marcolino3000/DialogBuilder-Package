@@ -34,11 +34,11 @@ MonoBehaviour:
   m_Name: NpcDialogOption
   m_EditorClassIdentifier: 
   Guid: ae91535191e6f46e1a6114559402ea55
-  Position: {x: 512, y: 179}
+  Position: {x: 485.71445, y: 172.42854}
   Blackboard:
     characterData: {fileID: 0}
   DialogLine: 'Was gibt''s denn? '
-  TextPreview: Was gibt's denn?
+  TextPreview: Was gibt's denn?...
   Children:
   - {fileID: -6623330606900721193}
   - {fileID: -4954209596611156742}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: PlayerDialogOption
   m_EditorClassIdentifier: 
   Guid: 28bfc3a3945e94fb4a79bee4eac4d8c0
-  Position: {x: 512, y: 337.99997}
+  Position: {x: 561.2859, y: 348.67856}
   Blackboard:
     characterData: {fileID: 0}
   DialogLine: Verzieh dich du Klappspaten.
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: PlayerDialogOption
   m_EditorClassIdentifier: 
   Guid: a0e6e9d6a73d64fd7a9e83c0bb9bf2df
-  Position: {x: 512, y: 30.00002}
+  Position: {x: 535.00006, y: -15.178625}
   Blackboard:
     characterData: {fileID: 0}
   DialogLine: Hallo.
@@ -195,11 +195,11 @@ MonoBehaviour:
   m_Name: PlayerDialogOption
   m_EditorClassIdentifier: 
   Guid: ad9c59c6a9a2e4f8181355fbda4c1ad3
-  Position: {x: 217, y: 30.000017}
+  Position: {x: 117.00003, y: -3.500042}
   Blackboard:
     characterData: {fileID: 0}
-  DialogLine: hallo ich bin marlele
-  TextPreview: hallo ich bin ma...
+  DialogLine: Hallo ich bin Marlene!
+  TextPreview: Hallo ich bin Ma...
   Children:
   - {fileID: 8214506094242630894}
   - {fileID: -7150211719925791683}
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: NpcDialogOption
   m_EditorClassIdentifier: 
   Guid: 8fe03e666ff39421fa39a8fada5809cd
-  Position: {x: 512, y: 437}
+  Position: {x: 586.00006, y: 510.92868}
   Blackboard:
     characterData: {fileID: 0}
   DialogLine: "*L\xE4uft von dannen* "
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: NpcDialogOption
   m_EditorClassIdentifier: 
   Guid: 3ec63d9252d0a44c3b4ea7707b30bb47
-  Position: {x: 217, y: 188.90909}
+  Position: {x: 157.85721, y: 161.07143}
   Blackboard:
     characterData: {fileID: 0}
   DialogLine: sdfsdf
