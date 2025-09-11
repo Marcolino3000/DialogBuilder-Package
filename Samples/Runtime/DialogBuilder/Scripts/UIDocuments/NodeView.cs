@@ -20,6 +20,19 @@ namespace DialogBuilder.Scripts.UIDocuments
         public CustomPort OutputPort;
         public NodeView(Node node) : base("Assets/com.cod.dialog-builder/Runtime/DialogBuilder/Scripts/UIDocuments/NodeView.uxml")
         {
+            var packageInfo = UnityEditor.PackageManager.PackageInfo.FindForAssembly(System.Reflection.Assembly.GetExecutingAssembly());
+            string packagePath = packageInfo?.assetPath ?? "Assets/com.cod.dialog-builder";
+    
+            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"{packagePath}/Runtime/DialogBuilder/Scripts/UIDocuments/NodeView.uxml");
+            if (visualTree != null)
+            {
+                visualTree.CloneTree(this);
+            }
+            else
+            {
+                Debug.LogError($"Could not load NodeView.uxml at path: {packagePath}/Runtime/DialogBuilder/Scripts/UIDocuments/NodeView.uxml");
+            }
+            
             Node = node;
             // title = node.name;
             viewDataKey = node.Guid;
