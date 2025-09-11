@@ -47,11 +47,12 @@ namespace DialogBuilder.Scripts.UIDocuments
             var packageInfo = UnityEditor.PackageManager.PackageInfo.FindForAssembly(System.Reflection.Assembly.GetExecutingAssembly());
             string packagePath = packageInfo?.assetPath ?? "Assets/com.cod.dialog-builder";
 
+            Debug.Log("PACKAGE PATH: " + packagePath);
+            
             var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"{packagePath}/Runtime/DialogBuilder/Scripts/UIDocuments/BehaviourTreeEditor.uxml");
             visualTree.CloneTree(root);
-            
-            Debug.Log("PACKAGE PATH: " + packagePath);
-        
+
+
             var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>($"{packagePath}/Runtime/DialogBuilder/Scripts/UIDocuments/BehaviourTreeEditor.uss");
             root.styleSheets.Add(styleSheet);
 
