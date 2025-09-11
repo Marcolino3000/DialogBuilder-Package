@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e86e6013fb5415d9fc88ab06a37cd42, type: 3}
-  m_Name: ExampleTree
+  m_Name: ExampleTree 1
   m_EditorClassIdentifier: 
   RootNodes:
   - {fileID: 2676999720429140291}
@@ -198,8 +198,8 @@ MonoBehaviour:
   Position: {x: 217, y: 30.000017}
   Blackboard:
     characterData: {fileID: 0}
-  DialogLine: 
-  TextPreview: dffsdf
+  DialogLine: Hey wie geht's?
+  TextPreview: Hey wie geht's?
   Children:
   - {fileID: 8214506094242630894}
   - {fileID: -7150211719925791683}

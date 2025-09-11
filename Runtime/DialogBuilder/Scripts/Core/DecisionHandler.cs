@@ -9,7 +9,7 @@ namespace DialogBuilder.Scripts.Core
     public class DecisionHandler : MonoBehaviour, IDialogOptionReceiver
     {
         public event Action<DialogOptionNode> DialogOptionSelected;
-        public void SetDialogOptions(DialogOptionNode[] options)
+        public void ShowDialogOptions(DialogOptionNode[] options)
         {
             if (options.Any(option => option is not NpcDialogOption))
             {
@@ -23,6 +23,12 @@ namespace DialogBuilder.Scripts.Core
             
             DialogOptionSelected?.Invoke(selectedOption);
         }
+
+        public void TriggerIdleReaction()
+        {
+            // throw new NotImplementedException();
+        }
+
 
         public DialogOptionType DialogOptionType => DialogOptionType.NPC;
 

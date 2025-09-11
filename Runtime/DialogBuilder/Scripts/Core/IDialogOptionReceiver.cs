@@ -6,7 +6,8 @@ namespace DialogBuilder.Scripts.Core
     public interface IDialogOptionReceiver : IDialogInterface
     {
         event Action<DialogOptionNode> DialogOptionSelected;
-        void SetDialogOptions(DialogOptionNode[] options);
+        void ShowDialogOptions(DialogOptionNode[] options);
+        void TriggerIdleReaction();
         DialogOptionType DialogOptionType { get; }
     }
 }

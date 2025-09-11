@@ -17,11 +17,16 @@ namespace DialogBuilder.Scripts.Nodes.Decorator
 
         private void CreateParagraphs()
         {
-            foreach (var paragraph in DialogLine.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries))
+            var paragraphs = DialogLine.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            
+            if(paragraphs.Length == 0)
+                return;
+            
+            foreach (var paragraph in paragraphs)
             {
                  Paragraphs.Add(new Tuple<string, float>(
                      paragraph, 
-                     paragraph.Length * 0.08f + 0.5f));
+                     paragraph.Length * 0.08f + 0.7f));
             }
         }
         public override DialogOptionNode[] GetChildNodes()
@@ -40,7 +45,6 @@ namespace DialogBuilder.Scripts.Nodes.Decorator
     {
         None,
         Player,
-        NPC,
-        Both
+        NPC
     }
 }

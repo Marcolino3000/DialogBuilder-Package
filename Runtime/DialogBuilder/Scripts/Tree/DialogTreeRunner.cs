@@ -6,6 +6,7 @@ using DialogBuilder.Scripts.Core;
 using DialogBuilder.Scripts.Nodes;
 using DialogBuilder.Scripts.Nodes.Decorator;
 using UnityEngine;
+using UnityEngine.Android;
 
 namespace DialogBuilder.Scripts.Tree
 {
@@ -20,19 +21,63 @@ namespace DialogBuilder.Scripts.Tree
         private List<IDialogOptionReceiver> _dialogPresenters;
         private DialogOptionType _currentOptionType;
         
+        private bool _activateRandomPickWhenIdle;
+        private float _timerUntilRandomPick = 2f;
+        private Coroutine _currentIdleTimer;
+
+        public void StartIdleTimer()
+        {
+            if (!isActiveAndEnabled) return;
+            
+            if (_currentIdleTimer != null)
+                StopCoroutine(_currentIdleTimer);
+
+            if (!_activateRandomPickWhenIdle)
+                return;
+            
+            _currentIdleTimer = StartCoroutine(AwaitRandomPickTimer());
+        }
+
         public void Setup(List<IDialogReceiver> receivers, List<IDialogOptionReceiver> presenters)
         {
             _dialogReceivers = receivers;
             _dialogPresenters = presenters;
 
-            foreach (var presenter in presenters)
-            {
+            foreach (var presenter in presenters) 
                 presenter.DialogOptionSelected += HandleOptionSelected;
-            }
+
+            foreach (var receiver in receivers) 
+                receiver.HideDialogLine();
 
             CurrentNodes = SetOptionType(Tree.GetStartingNodes());
             
             ExecuteCurrentNodes();
+        }
+
+        public void Reset()
+        {
+            StopAllCoroutines();
+            
+            CurrentNodes = SetOptionType(Tree.GetStartingNodes());
+            
+            ExecuteCurrentNodes();
+
+            foreach (var receiver in _dialogReceivers)
+                receiver.HideDialogLine();
+        }
+
+        public void SetOptionsForIdleRandomPick(bool activate, float time)
+        {
+            _activateRandomPickWhenIdle = activate;
+            _timerUntilRandomPick = time;
+        }
+
+        private IEnumerator AwaitRandomPickTimer()
+        {
+            yield return new WaitForSeconds(_timerUntilRandomPick);
+         
+            foreach (var x in _dialogPresenters) 
+                x.TriggerIdleReaction();
         }
 
         private void HandleOptionSelected(DialogOptionNode dialogOption)
@@ -46,7 +91,8 @@ namespace DialogBuilder.Scripts.Tree
                         PopularityModifier = playerDialogOption.PopularityModifier
                     });    
             }
-            
+    
+            StopAllCoroutines();
             StartCoroutine(DisplayDialog(dialogOption));
         }
 
@@ -111,7 +157,10 @@ namespace DialogBuilder.Scripts.Tree
             //todo:            
             _dialogPresenters.
                 FindAll(p => p.DialogOptionType == _currentOptionType)
-                .ForEach(p => p.SetDialogOptions(CurrentNodes));
+                .ForEach(p => p.ShowDialogOptions(CurrentNodes));
+            
+            if(_currentOptionType == DialogOptionType.Player && _activateRandomPickWhenIdle)
+                StartIdleTimer();
         }
     }
 }

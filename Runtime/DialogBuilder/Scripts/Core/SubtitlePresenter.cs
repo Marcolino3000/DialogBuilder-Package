@@ -16,11 +16,6 @@ namespace DialogBuilder.Scripts.Core
             SubtitleText.text = "";
         }
 
-        // public IEnumerator ShowParagraph(string characterName, Tuple<string, float> paragraph)
-        // {
-        //     yield return new WaitForSeconds(paragraph.Item2);
-        // }
-
         public void DisplayDialogLine(string characterName, string text)
         {
             characterNameText.text = characterName;

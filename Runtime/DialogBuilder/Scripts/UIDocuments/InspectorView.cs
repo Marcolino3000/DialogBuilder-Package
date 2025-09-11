@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEngine.iOS;
 using UnityEngine.UIElements;
 
 namespace DialogBuilder.Scripts.UIDocuments
@@ -19,14 +20,18 @@ namespace DialogBuilder.Scripts.UIDocuments
             Clear();
             
             UnityEngine.Object.DestroyImmediate(_editor);
-            _editor = Editor.CreateEditor(nodeView.Node);
+            _editor = (DialogNodeInspector)  Editor.CreateEditor(nodeView.Node, typeof(DialogNodeInspector));
+            // _editor = Editor.CreateEditor(nodeView.Node);
             
-            IMGUIContainer container = new IMGUIContainer(() =>
-            {
-                if(_editor.target)
-                    _editor.OnInspectorGUI();
-            });
-            Add(container);
+            // IMGUIContainer container = new IMGUIContainer(() =>
+            // {
+            //     if(_editor.target)
+            //         _editor.OnInspectorGUI();
+            // });
+            // Add(container);
+            
+            VisualElement inspectorGUI = _editor.CreateInspectorGUI();
+            Add(inspectorGUI);
         }
     }
 }

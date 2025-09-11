@@ -1,8 +1,8 @@
 {
  "name": "com.cod.dialog-builder",
- "version": "0.9.0",
+ "version": "0.9.1",
  "displayName": "Dialog Builder",
- "description": "test",
+ "description": "First test",
  "unity": "2022.3",
  "dependencies": {
   "com.unity.textmeshpro": "3.0.6"

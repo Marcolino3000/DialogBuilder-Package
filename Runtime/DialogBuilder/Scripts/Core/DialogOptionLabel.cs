@@ -26,6 +26,9 @@ namespace DialogBuilder.Scripts.Core
                 case AnswerVibe.Negative:
                     _textField.color = Color.red;
                     break;
+                case AnswerVibe.Neutral:
+                    _textField.color = Color.grey;
+                    break;
             }
         }
 

@@ -21,7 +21,7 @@ namespace DialogBuilder.Scripts.UIDocuments
         public NodeView(Node node) : base("Assets/Package/Runtime/DialogBuilder/Scripts/UIDocuments/NodeView.uxml")
         {
             Node = node;
-            title = node.name;
+            // title = node.name;
             viewDataKey = node.Guid;
 
             style.left = node.Position.x;
@@ -35,13 +35,19 @@ namespace DialogBuilder.Scripts.UIDocuments
             CreateOutputPorts();
             SetupClasses();
             
-            // Label descriptionLabel = this.Q<Label>("description");
-            // descriptionLabel.bindingPath = "Description";
-            // descriptionLabel.Bind(new SerializedObject(node));
-            
-            TextField textField = this.Q<TextField>("TextField");
-            textField.bindingPath = "Description";
+            var textField = this.Q<Label>("title-label");
+            textField.bindingPath = "TextPreview";
             textField.Bind(new SerializedObject(node));
+            // textField.RegisterValueChangedCallback(evt => node.LinePreview);
+
+            // node.DialogLineChanged += HandleDialogLineChanged;
+            node.RegisterCallback(HandleDialogLineChanged);
+        }
+
+        private void HandleDialogLineChanged(string dialogLine)
+        {
+            Debug.Log("Dialoge line changed to: " + dialogLine);
+            title = dialogLine;
         }
 
         private void SetupClasses()

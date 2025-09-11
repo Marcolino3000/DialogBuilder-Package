@@ -1,8 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using DialogBuilder.Scripts.Tree;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace DialogBuilder.Scripts.Core
 {
@@ -14,23 +14,24 @@ namespace DialogBuilder.Scripts.Core
         [Header("Settings")] 
         [SerializeField] private bool showSubtitles;
         [SerializeField] private bool showOptions;
+        
         [Tooltip("Pick a random option when no option is selected within time span.")]
         [SerializeField] private bool randomPick;
         [SerializeField] private float timerUntilRandomPick = 5f;
         
-        [Header("Internal References")]
-        [SerializeField] private DialogOptionPresenter dialogOptionPresenter;
-        [SerializeField] private GameObject dialogOptionContainer;
-        [SerializeField] private DecisionHandler decisionHandler;
-        [SerializeField] private SubtitlePresenter subtitlePresenter;
-        [SerializeField] private DialogTreeRunner treeRunner;
+        [HideInInspector] [SerializeField] private DialogOptionPresenter dialogOptionPresenter;
+        [HideInInspector] [SerializeField] private GameObject dialogOptionContainer;
+        [HideInInspector] [SerializeField] private DecisionHandler decisionHandler;
+        [HideInInspector] [SerializeField] private SubtitlePresenter subtitlePresenter;
+        [HideInInspector] [SerializeField] private DialogTreeRunner treeRunner;
 
         private void Start()
         {
-            FindObjectsImplementingDialogInterfaces();
+            FindClients();
+            FindEventSystem();
         }
 
-        private void FindObjectsImplementingDialogInterfaces()
+        private void FindClients()
         {
             var clients = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None).OfType<IDialogInterface>().ToArray();
             
@@ -62,7 +63,22 @@ namespace DialogBuilder.Scripts.Core
             
             treeRunner.Setup(receivers, presenters);
         }
-        
+
+        private void FindEventSystem()
+        {
+            if (Application.isPlaying)
+            {
+                if (EventSystem.current != null) 
+                    return;
+            
+                var eventSystem = new GameObject("[TEMP] EventSystem - added by DialogBuilder");
+                eventSystem.AddComponent<EventSystem>();
+                eventSystem.AddComponent<StandaloneInputModule>();
+                
+                Debug.LogWarning("Added EventSystem because none was found in the scene.");
+            }
+        }
+
         private void OnValidate()
         {
             if(subtitlePresenter != null)
@@ -73,11 +89,17 @@ namespace DialogBuilder.Scripts.Core
             if(dialogOptionPresenter != null)
             {
                 dialogOptionPresenter.gameObject.SetActive(showOptions);
-                dialogOptionContainer.SetActive(showOptions);
+                // dialogOptionContainer.SetActive(showOptions);
             }
             
-            dialogOptionPresenter.SetRandomPickOptions(randomPick, timerUntilRandomPick);
-            dialogOptionPresenter.StartIdleTimer();
+            treeRunner.SetOptionsForIdleRandomPick(randomPick, timerUntilRandomPick);
+            treeRunner.StartIdleTimer();
         }
+        
+        private void OnGUI()
+         {
+             if (GUILayout.Button("Reset Dialog")) 
+                 treeRunner.Reset();
+         }
     }
 }

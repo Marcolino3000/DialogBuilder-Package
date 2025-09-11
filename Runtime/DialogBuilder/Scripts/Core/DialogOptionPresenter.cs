@@ -10,28 +10,18 @@ namespace DialogBuilder.Scripts.Core
     public class DialogOptionPresenter : MonoBehaviour, IDialogOptionReceiver
     {
         public event Action<DialogOptionNode> DialogOptionSelected;
+
         public DialogOptionType DialogOptionType => DialogOptionType.Player;
-        
+
         [SerializeField] private GameObject _dialogOptionContainer;
         [SerializeField] private PlayerDialogOption[] _currentNodes;
 
-        private bool _activateRandomPickWhenIdle;
-        private float _timerUntilRandomPick;
-        private float _currentTime;
-        private bool _displayTimerStarted;
-        
         private List<DialogOptionLabel> _optionLabels = new();
 
-        public void SetRandomPickOptions(bool activate, float time)
+        public void TriggerIdleReaction()
         {
-            _activateRandomPickWhenIdle = activate;
-            _timerUntilRandomPick = time;
-        }
-        
-        public void StartIdleTimer()
-        {
-            StopTimer();
-            _displayTimerStarted = true;
+            OnOptionSelected(_currentNodes[Random.Range(0, _currentNodes.Length)]);
+            HideDialogOptions();
         }
 
         private void Awake()
@@ -44,39 +34,7 @@ namespace DialogBuilder.Scripts.Core
             }
         }
 
-        private void Update()
-        {
-            UpdateIdleTimer();
-        }
-
-        private void UpdateIdleTimer()
-        {
-            if(!_displayTimerStarted) return;
-            
-            if (_currentTime < _timerUntilRandomPick)
-            {
-                _currentTime += Time.deltaTime;
-            }
-
-            else
-            {
-                if (_activateRandomPickWhenIdle)
-                {
-                    OnOptionSelected(_currentNodes[Random.Range(0, _optionLabels.Count)]);
-                    HideDialogOptions();
-                }
-                
-                StopTimer();
-            }
-        }
-
-        private void StopTimer()
-        {
-            _displayTimerStarted = false;
-            _currentTime = 0f;
-        }
-
-        public void SetDialogOptions(DialogOptionNode[] options)
+        public void ShowDialogOptions(DialogOptionNode[] options)
         {
             if (!options.All(option => option is PlayerDialogOption))
             {
@@ -86,7 +44,6 @@ namespace DialogBuilder.Scripts.Core
 
             _currentNodes = options.Cast<PlayerDialogOption>().ToArray();
 
-            StopTimer();
             HideDialogOptions();
 
             var labels = _optionLabels.GetEnumerator();
@@ -96,8 +53,6 @@ namespace DialogBuilder.Scripts.Core
             {
                 SetupDialogOption(labels.Current, opts.Current);
             }
-
-            _displayTimerStarted = true;
         }
 
         private void SetupDialogOption(DialogOptionLabel labelsCurrent, PlayerDialogOption optsCurrent)
@@ -115,7 +70,6 @@ namespace DialogBuilder.Scripts.Core
         private void OnOptionSelected(PlayerDialogOption option)
         {
             DialogOptionSelected?.Invoke(option);
-            StopTimer();
             HideDialogOptions();
         }
     }
