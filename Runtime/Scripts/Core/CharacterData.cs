@@ -5,6 +5,8 @@ namespace Core
     [CreateAssetMenu]
     public class CharacterData : ScriptableObject
     {
+        public Sprite Icon;
+        
         [Header("Relationship Data")]
         
         [Range(-20, 20)]

@@ -11,7 +11,7 @@ namespace Tree
     [CreateAssetMenu()]
     public class BehaviourTree : ScriptableObject
     {
-        public DialogOptionNode[] RootNodes;
+        public List<DialogOptionNode> StartNodes;
         public List<Node> nodes = new();
         public Blackboard Blackboard = new();
 
@@ -20,6 +20,7 @@ namespace Tree
             Node node = CreateInstance(type) as Node;
             node.name = type.Name;
             node.Guid = GUID.Generate().ToString();
+            node.Blackboard = Blackboard;
             
             Undo.RecordObject(this, "Behaviour Tree (Create Node)");
             nodes.Add(node);
@@ -142,15 +143,20 @@ namespace Tree
             return tree;
         }
         
-        public DialogOptionNode[] GetStartingNodes()
+        public List<DialogOptionNode> GetStartingNodes()
         {
-            if (RootNodes == null || RootNodes.Length == 0 || RootNodes[0] is not DialogOptionNode)
+            if (StartNodes == null || StartNodes.Count == 0 || StartNodes[0] is not DialogOptionNode)
             {
                 Debug.LogWarning("No fitting root node found. Returning empty array.");
-                return Array.Empty<DialogOptionNode>();
+                return new List<DialogOptionNode>();
             }
             
-            return RootNodes;
+            return StartNodes;
+        }
+
+        public void AddStartNode(DialogOptionNode node)
+        {
+            StartNodes.Add(node);
         }
     }
 }

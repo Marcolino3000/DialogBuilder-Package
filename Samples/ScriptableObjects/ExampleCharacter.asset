@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec5258a5a8341139e95c6d6e600cb62, type: 3}
   m_Name: ExampleCharacter
   m_EditorClassIdentifier: 
+  Icon: {fileID: 229522924, guid: 857082fb73f7e452f984ce1ddf98ef26, type: 3}
   BasePopularity: 0
   Influenceability: 1

@@ -27,7 +27,7 @@ namespace Core
                     _textField.color = Color.red;
                     break;
                 case AnswerVibe.Neutral:
-                    _textField.color = Color.grey;
+                    _textField.color = Color.yellow;
                     break;
             }
         }

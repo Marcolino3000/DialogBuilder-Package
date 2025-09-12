@@ -24,6 +24,11 @@ namespace Core
             DialogOptionSelected?.Invoke(selectedOption);
         }
 
+        public void HideDialogOptions()
+        {
+            // throw new NotImplementedException();
+        }
+
         public void TriggerIdleReaction()
         {
             // throw new NotImplementedException();

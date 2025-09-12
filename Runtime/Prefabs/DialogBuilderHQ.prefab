@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959e9509d86a4a0aadcdb3b4b325dd34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tree: {fileID: 11400000, guid: f7ab2a0ae64664b9d85e0c66174918e5, type: 2}
+  Tree: {fileID: 11400000, guid: 08d13a8d5d84e40fea6caad6cae334d0, type: 2}
   CurrentNodes: []
   _dataManager: {fileID: 7488918243792480261}
 --- !u!1 &3689479256204641445
@@ -712,7 +712,7 @@ MonoBehaviour:
   showSubtitles: 1
   showOptions: 1
   randomPick: 0
-  timerUntilRandomPick: 2
+  timerUntilRandomPick: 3
   dialogOptionPresenter: {fileID: 5836294483203096175}
   dialogOptionContainer: {fileID: 3689479256204641445}
   decisionHandler: {fileID: 416619487792840566}

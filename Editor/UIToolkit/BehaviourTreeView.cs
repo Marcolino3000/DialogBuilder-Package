@@ -1,12 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Nodes;
+using Nodes.Basic;
+using Nodes.Decorator;
 using Tree;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 using UnityEngine.UIElements;
 using Node = Nodes.Node;
+using Vector2 = UnityEngine.Vector2;
 
 namespace Editor.UIToolkit
 {
@@ -16,6 +21,13 @@ namespace Editor.UIToolkit
         public Action<NodeView> OnNodeSelected;
 
         private BehaviourTree _tree;
+
+        private Vector2 GetLocalMousePosition(Vector2 worldMousePosition)
+        {
+            Vector2 localMousePosition = contentViewContainer.WorldToLocal(worldMousePosition);
+            
+            return localMousePosition;
+        }
         
         public BehaviourTreeView()
         { 
@@ -25,10 +37,6 @@ namespace Editor.UIToolkit
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
-            
-            // var packageInfo = UnityEditor.PackageManager.PackageInfo.FindForAssembly(System.Reflection.Assembly.GetExecutingAssembly());
-            // string packagePath = packageInfo?.assetPath ?? "Assets/com.cod.dialog-builder";
-
             
             var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>($"Packages/com.cod.dialog-builder/Editor/UIToolkit/BehaviourTreeEditor.uss");
             styleSheets.Add(styleSheet);
@@ -79,8 +87,6 @@ namespace Editor.UIToolkit
                 });
             });
         }
-        
-        
 
         private GraphViewChange OnGraphViewChanged(GraphViewChange graphviewchange)
         {
@@ -130,16 +136,29 @@ namespace Editor.UIToolkit
         {
             // base.BuildContextualMenu(evt);
 
+            NodeView target = evt.target as NodeView;
+            
+            evt.menu.AppendAction("Add as start Node", a =>
+            {
+                if (target != null)
+                {
+                    _tree.AddStartNode(target.Node as DialogOptionNode);
+                }
+            }, a => target != null && target.Node is DialogOptionNode ? 
+                DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
+            
+            var mousePosition = GetLocalMousePosition(evt.mousePosition) + new Vector2(150f, 100f);
+            
             var types = TypeCache.GetTypesDerivedFrom<ActionNode>();
             foreach (var type in types)
             {
                 evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", a => CreateNode(type));
             }
             
-            types = TypeCache.GetTypesDerivedFrom<CompositeNode>();
+            types = TypeCache.GetTypesDerivedFrom<DialogOptionNode>();
             foreach (var type in types)
             {
-                evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", a => CreateNode(type));
+                evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", a => CreateNode(type, mousePosition));
             }
             
             types = TypeCache.GetTypesDerivedFrom<DecoratorNode>();
@@ -163,12 +182,27 @@ namespace Editor.UIToolkit
             Node node = _tree.CreateNode(type);
             CreateNodeView(node);
         }
+        
+        private void CreateNode(Type type, Vector2 mousePosition)
+        {
+            Node node = _tree.CreateNode(type);
+            CreateNodeView(node, mousePosition);
+        }
 
         private void CreateNodeView(Node node)
         {
             NodeView nodeView = new NodeView(node);
             nodeView.OnNodeSelected = OnNodeSelected;
             AddElement(nodeView);
+        }
+        
+        private void CreateNodeView(Node node, Vector2 mousePosition)
+        {
+            NodeView nodeView = new NodeView(node);
+            nodeView.OnNodeSelected = OnNodeSelected;
+            nodeView.SetPosition(new Rect(mousePosition, Vector2.zero));
+            AddElement(nodeView);
+            Debug.Log("create node view at " + mousePosition);
         }
 
         public void UpdateNodeStates()

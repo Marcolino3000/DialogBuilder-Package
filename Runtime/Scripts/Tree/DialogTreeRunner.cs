@@ -42,13 +42,16 @@ namespace Tree
             _dialogReceivers = receivers;
             _dialogPresenters = presenters;
 
-            foreach (var presenter in presenters) 
+            foreach (var presenter in presenters)
+            {
                 presenter.DialogOptionSelected += HandleOptionSelected;
+                presenter.HideDialogOptions();
+            }
 
             foreach (var receiver in receivers) 
                 receiver.HideDialogLine();
 
-            CurrentNodes = SetOptionType(Tree.GetStartingNodes());
+            CurrentNodes = SetOptionType(Tree.GetStartingNodes().ToArray());
             
             ExecuteCurrentNodes();
         }
@@ -56,13 +59,15 @@ namespace Tree
         public void Reset()
         {
             StopAllCoroutines();
-            
-            CurrentNodes = SetOptionType(Tree.GetStartingNodes());
-            
-            ExecuteCurrentNodes();
 
             foreach (var receiver in _dialogReceivers)
                 receiver.HideDialogLine();
+
+            foreach (var presenter in _dialogPresenters) 
+                presenter.HideDialogOptions();
+            
+            CurrentNodes = SetOptionType(Tree.GetStartingNodes().ToArray());
+            ExecuteCurrentNodes();
         }
 
         public void SetOptionsForIdleRandomPick(bool activate, float time)

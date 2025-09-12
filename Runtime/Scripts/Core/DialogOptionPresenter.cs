@@ -61,7 +61,7 @@ namespace Core
             labelsCurrent.Setup(optsCurrent);
         }
 
-        private void HideDialogOptions()
+        public void HideDialogOptions()
         {
             foreach (var label in _optionLabels) 
                 label.HideText();

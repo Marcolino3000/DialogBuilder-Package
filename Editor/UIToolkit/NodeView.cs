@@ -35,6 +35,17 @@ namespace Editor.UIToolkit
             var textField = this.Q<Label>("title-label");
             textField.bindingPath = "TextPreview";
             textField.Bind(new SerializedObject(node));
+
+            SetCharacterIcon();
+        }
+
+        private void SetCharacterIcon()
+        {
+            if (Node is not NpcDialogOption || Node.Blackboard.CharacterData is null) 
+                return;
+            
+            var icon = this.Q<VisualElement>("CharacterIcon");
+            icon.style.backgroundImage = new StyleBackground(Node.Blackboard.CharacterData.Icon);
         }
 
         private void SetupClasses()
@@ -139,6 +150,7 @@ namespace Editor.UIToolkit
         {
             base.OnSelected();
             OnNodeSelected?.Invoke(this);
+            
         }
 
         public void SortChildren()

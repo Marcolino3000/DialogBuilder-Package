@@ -7,6 +7,7 @@ namespace Core
     {
         event Action<DialogOptionNode> DialogOptionSelected;
         void ShowDialogOptions(DialogOptionNode[] options);
+        public void HideDialogOptions();
         void TriggerIdleReaction();
         DialogOptionType DialogOptionType { get; }
     }

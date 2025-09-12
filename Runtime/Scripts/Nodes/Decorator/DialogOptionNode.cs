@@ -17,10 +17,13 @@ namespace Nodes.Decorator
 
         private void CreateParagraphs()
         {
+            if(string.IsNullOrWhiteSpace(DialogLine))
+                return;
+            
             var paragraphs = DialogLine.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             
-            if(paragraphs.Length == 0)
-                return;
+            // if(paragraphs.Length == 0)
+            //     return;
             
             foreach (var paragraph in paragraphs)
             {

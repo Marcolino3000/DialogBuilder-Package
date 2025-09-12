@@ -1,3 +1,6 @@
+using System;
+using UnityEngine;
+
 namespace Nodes.Decorator
 {
     public class NpcDialogOption : DialogOptionNode
