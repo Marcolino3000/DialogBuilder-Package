@@ -157,6 +157,7 @@ namespace Tree
         public void AddStartNode(DialogOptionNode node)
         {
             StartNodes.Add(node);
+            EditorUtility.SetDirty(this);
         }
     }
 }
