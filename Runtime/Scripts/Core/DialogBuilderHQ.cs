@@ -53,26 +53,23 @@ namespace Core
 
             foreach (var client in clients)
             {
-                switch (client) 
+                // clients might implement multiple interfaces
+                
+                if (client is IDialogOptionReceiver presenter)
                 {
-                    case IDialogOptionReceiver presenter:
-                        presenters.Add(presenter);
-                        break;
-                    
-                    case IDialogReceiver textReceiver:
-                        receivers.Add(textReceiver);
-                        break;
-                    
-                    case IDialogStarter starter:
-                        starters.Add(starter);
-                        break;
-                    
-                    case IDialogTreeSetter treeSetter:
-                        treeSetters.Add(treeSetter);
-                        break;
-                    
-                    default: Debug.LogWarning("Interface not implemented: " + client.GetType().Name); 
-                        break;
+                    presenters.Add(presenter);
+                }
+                if (client is IDialogReceiver textReceiver)
+                {
+                    receivers.Add(textReceiver);
+                }
+                if (client is IDialogStarter starter)
+                {
+                    starters.Add(starter);
+                }
+                if (client is IDialogTreeSetter treeSetter)
+                {
+                    treeSetters.Add(treeSetter);
                 }
             }
             
