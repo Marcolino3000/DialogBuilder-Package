@@ -24,19 +24,22 @@ namespace Core
         [HideInInspector] [SerializeField] private DecisionHandler decisionHandler;
         [HideInInspector] [SerializeField] private SubtitlePresenter subtitlePresenter;
         [HideInInspector] [SerializeField] private DialogTreeRunner treeRunner;
-
+        
+        
         private void Start()
         {
             FindClients();
             FindEventSystem();
         }
-
+        
         private void FindClients()
         {
             var clients = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None).OfType<IDialogInterface>().ToArray();
             
             List<IDialogReceiver> receivers = new();
             List<IDialogOptionReceiver> presenters = new();
+            List<IDialogStarter> starters = new();
+            List<IDialogTreeSetter> treeSetters = new();
 
             if (clients.Length == 0)
             {
@@ -56,12 +59,20 @@ namespace Core
                         receivers.Add(textReceiver);
                         break;
                     
+                    case IDialogStarter starter:
+                        starters.Add(starter);
+                        break;
+                    
+                    case IDialogTreeSetter treeSetter:
+                        treeSetters.Add(treeSetter);
+                        break;
+                    
                     default: Debug.LogWarning("Interface not implemented: " + client.GetType().Name); 
                         break;
                 }
             }
             
-            treeRunner.Setup(receivers, presenters);
+            treeRunner.Setup(receivers, presenters, starters, treeSetters);
         }
 
         private void FindEventSystem()

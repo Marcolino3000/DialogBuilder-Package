@@ -20,7 +20,7 @@ namespace Editor.UIToolkit
         public new class UxmlFactory : UxmlFactory<BehaviourTreeView, UxmlTraits> { }
         public Action<NodeView> OnNodeSelected;
 
-        private BehaviourTree _tree;
+        private DialogTree _tree;
 
         private Vector2 GetLocalMousePosition(Vector2 worldMousePosition)
         {
@@ -55,7 +55,7 @@ namespace Editor.UIToolkit
             return GetNodeByGuid(node.Guid) as NodeView;
         }
         
-        public void PopulateView(BehaviourTree tree)
+        public void PopulateView(DialogTree tree)
         {
             _tree = tree;
 
@@ -81,7 +81,7 @@ namespace Editor.UIToolkit
                 {
                     NodeView parentView = FindNodeView(parent);
                     NodeView childView = FindNodeView(child);
-
+                    childView.Focus();
                     Edge edge = parentView.OutputPort.ConnectTo(childView.InputPort);
                     AddElement(edge);
                 });

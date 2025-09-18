@@ -11,15 +11,17 @@ namespace Tree
 {
     public class DialogTreeRunner : MonoBehaviour
     {
-        public BehaviourTree Tree;
+        public DialogTree Tree;
         public DialogOptionNode[] CurrentNodes;
 
         [SerializeField] private DataManager _dataManager;
 
         private List<IDialogReceiver> _dialogReceivers;
         private List<IDialogOptionReceiver> _dialogPresenters;
+        private List<IDialogStarter> _dialogStarters;
+        private List<IDialogTreeSetter> _dialogTreeSetters;
         private DialogOptionType _currentOptionType;
-        
+
         private bool _activateRandomPickWhenIdle;
         private float _timerUntilRandomPick = 2f;
         private Coroutine _currentIdleTimer;
@@ -37,11 +39,15 @@ namespace Tree
             _currentIdleTimer = StartCoroutine(AwaitRandomPickTimer());
         }
 
-        public void Setup(List<IDialogReceiver> receivers, List<IDialogOptionReceiver> presenters)
+        public void Setup(List<IDialogReceiver> receivers, List<IDialogOptionReceiver> presenters, 
+            List<IDialogStarter> starters, List<IDialogTreeSetter> treeSetters)
         {
             _dialogReceivers = receivers;
             _dialogPresenters = presenters;
-
+            _dialogStarters = starters;
+            _dialogTreeSetters = treeSetters;
+            
+            
             foreach (var presenter in presenters)
             {
                 presenter.DialogOptionSelected += HandleOptionSelected;
@@ -51,9 +57,20 @@ namespace Tree
             foreach (var receiver in receivers) 
                 receiver.HideDialogLine();
 
+            foreach (var starter in starters)
+            {
+                starter.OnStartDialog += ExecuteCurrentNodes;
+                starter.OnStopDialog += Reset;
+            }
+
+            foreach (var setter in treeSetters)
+            {
+                setter.OnSetDialogTree += SetDialogTree;
+            }
+
             CurrentNodes = SetOptionType(Tree.GetStartingNodes().ToArray());
             
-            ExecuteCurrentNodes();
+            // ExecuteCurrentNodes();
         }
 
         public void Reset()
@@ -67,7 +84,7 @@ namespace Tree
                 presenter.HideDialogOptions();
             
             CurrentNodes = SetOptionType(Tree.GetStartingNodes().ToArray());
-            ExecuteCurrentNodes();
+            // ExecuteCurrentNodes();
         }
 
         public void SetOptionsForIdleRandomPick(bool activate, float time)
@@ -148,6 +165,11 @@ namespace Tree
             }
 
             return nodes;
+        }
+
+        private void SetDialogTree(DialogTree tree)
+        {
+            Tree = tree;
         }
 
         private void ExecuteCurrentNodes()

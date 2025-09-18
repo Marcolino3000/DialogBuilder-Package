@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Tree
 {
     [CreateAssetMenu()]
-    public class BehaviourTree : ScriptableObject
+    public class DialogTree : ScriptableObject
     {
         public List<DialogOptionNode> StartNodes;
         public List<Node> nodes = new();
@@ -129,9 +129,9 @@ namespace Tree
         //     }
         // }
         
-        public BehaviourTree Clone()
+        public DialogTree Clone()
         {
-            BehaviourTree tree = Instantiate(this);
+            DialogTree tree = Instantiate(this);
             // tree.RootNodes = tree.RootNodes.Clone();
             // tree.nodes = new List<Node>();
             //

@@ -28,7 +28,7 @@ namespace Editor.UIToolkit
         [OnOpenAsset]
         public static bool OnOpenAsset(int instanceID, int line)
         {
-            if (Selection.activeObject is BehaviourTree)
+            if (Selection.activeObject is DialogTree)
             {
                 OpenWindow();
                 return true;
@@ -105,7 +105,7 @@ namespace Editor.UIToolkit
 
         private void OnSelectionChange()
         {
-            BehaviourTree tree = Selection.activeObject as BehaviourTree;
+            DialogTree tree = Selection.activeObject as DialogTree;
         
             if(!tree)
             {
