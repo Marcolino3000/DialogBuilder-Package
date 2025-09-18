@@ -34,7 +34,11 @@ namespace Core
         
         private void FindClients()
         {
-            var clients = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None).OfType<IDialogInterface>().ToArray();
+            var monos = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None).OfType<IDialogInterface>().ToArray();
+            
+            var scriptables = Resources.FindObjectsOfTypeAll<ScriptableObject>().OfType<IDialogInterface>().ToArray();
+            
+            var clients = monos.Concat(scriptables).ToArray();
             
             List<IDialogReceiver> receivers = new();
             List<IDialogOptionReceiver> presenters = new();
