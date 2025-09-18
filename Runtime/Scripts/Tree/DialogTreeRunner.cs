@@ -170,6 +170,7 @@ namespace Tree
         private void SetDialogTree(DialogTree tree)
         {
             Tree = tree;
+            CurrentNodes = SetOptionType(Tree.GetStartingNodes().ToArray());
         }
 
         private void ExecuteCurrentNodes()
