@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 1823707380253037302}
   - component: {fileID: 8914177144427164614}
   m_Layer: 0
-  m_Name: DialogOptionsContainer
+  m_Name: DebugDialogOptionsContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -477,8 +477,9 @@ GameObject:
   - component: {fileID: 7765447183176254619}
   - component: {fileID: 328293331980844521}
   - component: {fileID: 2905625108330358432}
+  - component: {fileID: 7158033552651128908}
   m_Layer: 5
-  m_Name: SubtitleContainer
+  m_Name: DebugSubtitleContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -569,6 +570,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7158033552651128908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4691404034926296238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e8a2b22e169425a8cb924e1a442a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterNameText: {fileID: 667355317739275215}
+  SubtitleText: {fileID: 2369152321516030518}
 --- !u!1 &6506015022561019470
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,10 +681,9 @@ MonoBehaviour:
   showOptions: 1
   randomPick: 0
   timerUntilRandomPick: 3
-  dialogOptionPresenter: {fileID: 0}
-  dialogOptionContainer: {fileID: 3689479256204641445}
+  dialogOptionPresenter: {fileID: 8914177144427164614}
   decisionHandler: {fileID: 416619487792840566}
-  subtitlePresenter: {fileID: 0}
+  subtitlePresenter: {fileID: 7158033552651128908}
   treeRunner: {fileID: 2062893418243403057}
 --- !u!1 &7885396843105636691
 GameObject:
