@@ -103,52 +103,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 55
---- !u!1 &718701912631100298
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7024247141228355301}
-  - component: {fileID: 5836294483203096175}
-  m_Layer: 0
-  m_Name: OptionPresenter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7024247141228355301
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718701912631100298}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -325.66147, y: -25.55913, z: -0.038969707}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8136911677735179269}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5836294483203096175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718701912631100298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 499ef75a65b74061aab80e45cc33183a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dialogOptionContainer: {fileID: 3689479256204641445}
-  _currentNodes: []
 --- !u!1 &759701598503227295
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +114,6 @@ GameObject:
   - component: {fileID: 4621828221289760274}
   - component: {fileID: 7891760242753843693}
   - component: {fileID: 2369152321516030518}
-  - component: {fileID: 3395519644035530357}
   m_Layer: 5
   m_Name: SubtitlePresenter
   m_TagString: Untagged
@@ -284,20 +237,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3395519644035530357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 759701598503227295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e8a2b22e169425a8cb924e1a442a72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterNameText: {fileID: 667355317739275215}
-  SubtitleText: {fileID: 2369152321516030518}
 --- !u!1 &1306387577307944387
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +345,7 @@ GameObject:
   - component: {fileID: 7924960041865991291}
   - component: {fileID: 2935100619045286659}
   - component: {fileID: 1823707380253037302}
+  - component: {fileID: 8914177144427164614}
   m_Layer: 0
   m_Name: DialogOptionsContainer
   m_TagString: Untagged
@@ -511,6 +451,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8914177144427164614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689479256204641445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499ef75a65b74061aab80e45cc33183a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogOptionContainer: {fileID: 3689479256204641445}
+  _currentNodes: []
 --- !u!1 &4691404034926296238
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,7 +645,6 @@ Transform:
   m_Children:
   - {fileID: 9185775212827168267}
   - {fileID: 1962831319428991464}
-  - {fileID: 7024247141228355301}
   - {fileID: 6758650080308008608}
   - {fileID: 5284225674735382911}
   m_Father: {fileID: 0}
@@ -713,10 +666,10 @@ MonoBehaviour:
   showOptions: 1
   randomPick: 0
   timerUntilRandomPick: 3
-  dialogOptionPresenter: {fileID: 5836294483203096175}
+  dialogOptionPresenter: {fileID: 0}
   dialogOptionContainer: {fileID: 3689479256204641445}
   decisionHandler: {fileID: 416619487792840566}
-  subtitlePresenter: {fileID: 3395519644035530357}
+  subtitlePresenter: {fileID: 0}
   treeRunner: {fileID: 2062893418243403057}
 --- !u!1 &7885396843105636691
 GameObject:

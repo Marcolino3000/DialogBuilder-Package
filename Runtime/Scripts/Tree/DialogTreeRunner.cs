@@ -69,8 +69,11 @@ namespace Tree
             }
 
             CurrentNodes = SetOptionType(Tree.GetStartingNodes().ToArray());
-            
-            // ExecuteCurrentNodes();
+        }
+
+        public void StartDialog()
+        {
+            ExecuteCurrentNodes();
         }
 
         public void Reset()

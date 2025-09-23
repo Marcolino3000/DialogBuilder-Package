@@ -19,11 +19,11 @@ namespace Core
         [SerializeField] private bool randomPick;
         [SerializeField] private float timerUntilRandomPick = 5f;
         
-        [HideInInspector] [SerializeField] private DialogOptionPresenter dialogOptionPresenter;
-        [HideInInspector] [SerializeField] private GameObject dialogOptionContainer;
-        [HideInInspector] [SerializeField] private DecisionHandler decisionHandler;
-        [HideInInspector] [SerializeField] private SubtitlePresenter subtitlePresenter;
-        [HideInInspector] [SerializeField] private DialogTreeRunner treeRunner;
+        [SerializeField] private DialogOptionPresenter dialogOptionPresenter;
+        // [SerializeField] private GameObject dialogOptionContainer;
+        [SerializeField] private DecisionHandler decisionHandler;
+        [SerializeField] private SubtitlePresenter subtitlePresenter;
+        [SerializeField] private DialogTreeRunner treeRunner;
         
         
         private void Start()
@@ -97,11 +97,10 @@ namespace Core
             {
                 subtitlePresenter.gameObject.SetActive(showSubtitles);
             }
-            
+
             if(dialogOptionPresenter != null)
             {
                 dialogOptionPresenter.gameObject.SetActive(showOptions);
-                // dialogOptionContainer.SetActive(showOptions);
             }
             
             treeRunner.SetOptionsForIdleRandomPick(randomPick, timerUntilRandomPick);
@@ -112,6 +111,9 @@ namespace Core
          {
              if (GUILayout.Button("Reset Dialog")) 
                  treeRunner.Reset();
+             
+             if(GUILayout.Button("Start Dialog"))
+                 treeRunner.StartDialog();
          }
     }
 }
