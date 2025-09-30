@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2818dd0c5b404dfe8aedaf83b49ab7b1, type: 3}
-  m_Name: NpcDialogOption
+  m_Name: Ja ich bin dir g...
   m_EditorClassIdentifier: 
   Guid: 0b489bd3d10514238b00e3b19ec316ab
-  Position: {x: 32.999893, y: -639.9448}
+  Position: {x: 33.000008, y: -640}
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: Ja ich bin dir gefolgt.
@@ -22,6 +22,8 @@ MonoBehaviour:
   - {fileID: 4346923093556952275}
   - {fileID: -5383730266762262135}
   - {fileID: 7977693498305313975}
+  RequiredNodes: []
+  BlockerNodes: []
   PopularityValue: 0
 --- !u!114 &-7961286758752456900
 MonoBehaviour:
@@ -33,16 +35,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: "Ich wei\xDF gar nic..."
   m_EditorClassIdentifier: 
   Guid: ab3a0fb0d4ed6471db056e0f7d7cf311
-  Position: {x: -102.74795, y: 8.507089}
+  Position: {x: -103.00012, y: 8.999964}
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Ich wei\xDF gar nicht mehr warum ich dich damals so unangenehm fand."
   TextPreview: "Ich wei\xDF gar nic..."
   Children:
   - {fileID: 1326023653020022437}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 0
   _popularityModifier: 0
 --- !u!114 &-7424378223682006677
@@ -55,7 +59,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2818dd0c5b404dfe8aedaf83b49ab7b1, type: 3}
-  m_Name: NpcDialogOption
+  m_Name: Hey Marlene, sch...
   m_EditorClassIdentifier: 
   Guid: f6cde50405b9f4f5e9e5c440c9d78f41
   Position: {x: 32.99999, y: -1652.5763}
@@ -68,6 +72,8 @@ MonoBehaviour:
   - {fileID: 428056451835201189}
   - {fileID: 2676999720429140291}
   - {fileID: -4663519145765460523}
+  RequiredNodes: []
+  BlockerNodes: []
   PopularityValue: 0
 --- !u!114 &-6846182487938745993
 MonoBehaviour:
@@ -79,16 +85,18 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2818dd0c5b404dfe8aedaf83b49ab7b1, type: 3}
-  m_Name: NpcDialogOption
+  m_Name: Also ich wollte ...
   m_EditorClassIdentifier: 
   Guid: 843f1d9a9fd1a49eaa38c429074e9c2e
-  Position: {x: 33.000015, y: -1121.4543}
+  Position: {x: 33.000015, y: -1121}
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: Also ich wollte dich (trotzdem) einladen.
   TextPreview: Also ich wollte ...
   Children:
   - {fileID: 321336787002640964}
+  RequiredNodes: []
+  BlockerNodes: []
   PopularityValue: 6
 --- !u!114 &-6623330606900721193
 MonoBehaviour:
@@ -100,7 +108,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: Das war nur iron...
   m_EditorClassIdentifier: 
   Guid: 1745f08e30e9d44d4aa5740786c31a5a
   Position: {x: 32.999878, y: -1252.0002}
@@ -110,6 +118,9 @@ MonoBehaviour:
   TextPreview: Das war nur iron...
   Children:
   - {fileID: -6846182487938745993}
+  RequiredNodes:
+  - {fileID: 428056451835201189}
+  BlockerNodes: []
   answerVibe: 0
   _popularityModifier: 0
 --- !u!114 &-6117493512016797897
@@ -122,16 +133,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: Ou-kayyy....(???...
   m_EditorClassIdentifier: 
   Guid: d16f82123a64e417283cd6c818b471eb
-  Position: {x: -113.944595, y: -252}
+  Position: {x: -102.999916, y: -251.99994}
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: Ou-kayyy....(???)
   TextPreview: Ou-kayyy....(???...
   Children:
   - {fileID: 2038494943355648970}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 0
   _popularityModifier: 0
 --- !u!114 &-5383730266762262135
@@ -144,7 +157,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: Ja... aber woher...
   m_EditorClassIdentifier: 
   Guid: 89d8c4306fa70410c956ceee54f8cb23
   Position: {x: 32.999893, y: -511.00012}
@@ -154,6 +167,8 @@ MonoBehaviour:
   TextPreview: Ja... aber woher...
   Children:
   - {fileID: 4947966587424837287}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 0
   _popularityModifier: 0
 --- !u!114 &-4954209596611156742
@@ -166,7 +181,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: "*Die T\xFCr zuknall..."
   m_EditorClassIdentifier: 
   Guid: 28bfc3a3945e94fb4a79bee4eac4d8c0
   Position: {x: 330.99997, y: -1252}
@@ -176,6 +191,8 @@ MonoBehaviour:
   TextPreview: "*Die T\xFCr zuknall..."
   Children:
   - {fileID: -6846182487938745993}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 2
   _popularityModifier: -5
 --- !u!114 &-4663519145765460523
@@ -188,7 +205,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: "*Die T\xFCr zuknall..."
   m_EditorClassIdentifier: 
   Guid: f258f2f47c0144f848080ea5db99bdc3
   Position: {x: 366.91696, y: -1518.9998}
@@ -198,6 +215,8 @@ MonoBehaviour:
   TextPreview: "*Die T\xFCr zuknall..."
   Children:
   - {fileID: 8214506094242630894}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 2
   _popularityModifier: -5
 --- !u!114 &-4340736748771555055
@@ -210,7 +229,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: Genau, ja, Autor...
   m_EditorClassIdentifier: 
   Guid: aadadd9fbb502439497a04faec9fb5b1
   Position: {x: 201, y: 8.999957}
@@ -220,6 +239,8 @@ MonoBehaviour:
   TextPreview: Genau, ja, Autor...
   Children:
   - {fileID: 1326023653020022437}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 0
   _popularityModifier: 0
 --- !u!114 &-4101616213120827883
@@ -241,6 +262,8 @@ MonoBehaviour:
   DialogLine: 
   TextPreview: 
   Children: []
+  RequiredNodes: []
+  BlockerNodes: []
   PopularityValue: 0
 --- !u!114 &-3974068873530576135
 MonoBehaviour:
@@ -252,7 +275,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: "Sch\xF6n f\xFCr euch."
   m_EditorClassIdentifier: 
   Guid: dfbf78454523649e2bbf462445114dc6
   Position: {x: -269.00012, y: -1252.0002}
@@ -262,6 +285,8 @@ MonoBehaviour:
   TextPreview: "Sch\xF6n f\xFCr euch."
   Children:
   - {fileID: -6846182487938745993}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 1
   _popularityModifier: 5
 --- !u!114 &-1171378232159094076
@@ -274,7 +299,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: "Woher wei\xDFt du, ..."
   m_EditorClassIdentifier: 
   Guid: aa1d88cc15d2542cc80e83ad77fa8524
   Position: {x: 32.999893, y: -756.00024}
@@ -284,6 +309,8 @@ MonoBehaviour:
   TextPreview: "Woher wei\xDFt du, ..."
   Children:
   - {fileID: -8406367446726604415}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 0
   _popularityModifier: 0
 --- !u!114 &11400000
@@ -337,16 +364,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: ...toll...
   m_EditorClassIdentifier: 
   Guid: 566325209f1074752a6320fa028c218a
   Position: {x: 33.000046, y: -994.5207}
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
-  DialogLine: ...toll.
-  TextPreview: ...toll.
+  DialogLine: ...toll...
+  TextPreview: ...toll...
   Children:
   - {fileID: 7715138301334161512}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 0
   _popularityModifier: 0
 --- !u!114 &428056451835201189
@@ -359,7 +388,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: Bitte gib mir no...
   m_EditorClassIdentifier: 
   Guid: a0e6e9d6a73d64fd7a9e83c0bb9bf2df
   Position: {x: -269.00012, y: -1519.0002}
@@ -369,6 +398,8 @@ MonoBehaviour:
   TextPreview: Bitte gib mir no...
   Children:
   - {fileID: 8214506094242630894}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 1
   _popularityModifier: 5
 --- !u!114 &1326023653020022437
@@ -381,10 +412,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2818dd0c5b404dfe8aedaf83b49ab7b1, type: 3}
-  m_Name: NpcDialogOption
+  m_Name: Meine Cousine is...
   m_EditorClassIdentifier: 
   Guid: 7817c4f6fd466408ca8dbf7e800b01ff
-  Position: {x: 31.999933, y: 141.77348}
+  Position: {x: 31.999798, y: 141.99998}
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Meine Cousine ist ja auch Autorin.\n\"Verloren im Kuss der Sehnsucht\"
@@ -392,6 +423,8 @@ MonoBehaviour:
     l\xE4uft's bei dir?"
   TextPreview: Meine Cousine is...
   Children: []
+  RequiredNodes: []
+  BlockerNodes: []
   PopularityValue: 0
 --- !u!114 &2038494943355648970
 MonoBehaviour:
@@ -403,7 +436,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2818dd0c5b404dfe8aedaf83b49ab7b1, type: 3}
-  m_Name: NpcDialogOption
+  m_Name: Bist du jetzt Au...
   m_EditorClassIdentifier: 
   Guid: ffe2cac9dd35c43dfb85fcb31fca6b72
   Position: {x: 31.999872, y: -122.67145}
@@ -415,6 +448,8 @@ MonoBehaviour:
   Children:
   - {fileID: -7961286758752456900}
   - {fileID: -4340736748771555055}
+  RequiredNodes: []
+  BlockerNodes: []
   PopularityValue: 0
 --- !u!114 &2676999720429140291
 MonoBehaviour:
@@ -426,7 +461,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: Du warst der ein...
   m_EditorClassIdentifier: 
   Guid: ad9c59c6a9a2e4f8181355fbda4c1ad3
   Position: {x: 32.999878, y: -1519.0002}
@@ -436,6 +471,8 @@ MonoBehaviour:
   TextPreview: Du warst der ein...
   Children:
   - {fileID: 8214506094242630894}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 0
   _popularityModifier: 0
 --- !u!114 &4346923093556952275
@@ -448,7 +485,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: "\xC4hm magst du das..."
   m_EditorClassIdentifier: 
   Guid: 9d198800efbd349b298f08888958e276
   Position: {x: -267.00006, y: -511.00012}
@@ -458,6 +495,8 @@ MonoBehaviour:
   TextPreview: "\xC4hm magst du das..."
   Children:
   - {fileID: 4947966587424837287}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 0
   _popularityModifier: 0
 --- !u!114 &4947966587424837287
@@ -470,7 +509,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2818dd0c5b404dfe8aedaf83b49ab7b1, type: 3}
-  m_Name: NpcDialogOption
+  m_Name: Ja also ich hab ...
   m_EditorClassIdentifier: 
   Guid: 84cecfb87840549aa8e098dff7924cd1
   Position: {x: 32.9999, y: -383.04337}
@@ -482,6 +521,8 @@ MonoBehaviour:
   Children:
   - {fileID: -6117493512016797897}
   - {fileID: 8415505403560475243}
+  RequiredNodes: []
+  BlockerNodes: []
   PopularityValue: 0
 --- !u!114 &7715138301334161512
 MonoBehaviour:
@@ -493,10 +534,10 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2818dd0c5b404dfe8aedaf83b49ab7b1, type: 3}
-  m_Name: NpcDialogOption
+  m_Name: Ja, wir haben ne...
   m_EditorClassIdentifier: 
   Guid: 8fe03e666ff39421fa39a8fada5809cd
-  Position: {x: 32.999893, y: -869.0002}
+  Position: {x: 33.00006, y: -868.9998}
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Ja, wir haben ne S\xE4ngerin engagiert - ich darf noch nicht verraten
@@ -504,6 +545,8 @@ MonoBehaviour:
   TextPreview: Ja, wir haben ne...
   Children:
   - {fileID: -1171378232159094076}
+  RequiredNodes: []
+  BlockerNodes: []
   PopularityValue: 0
 --- !u!114 &7977693498305313975
 MonoBehaviour:
@@ -515,16 +558,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: "*T\xFCr schlie\xDFen.*..."
   m_EditorClassIdentifier: 
   Guid: 59189dc26764a4c8a9ade9629174ac8e
-  Position: {x: 339.88922, y: -511.00006}
+  Position: {x: 340.00006, y: -511.00003}
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "*T\xFCr schlie\xDFen.*"
   TextPreview: "*T\xFCr schlie\xDFen.*..."
   Children:
   - {fileID: 4947966587424837287}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 2
   _popularityModifier: -5
 --- !u!114 &8214506094242630894
@@ -537,7 +582,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2818dd0c5b404dfe8aedaf83b49ab7b1, type: 3}
-  m_Name: NpcDialogOption
+  m_Name: Ich heirate jetz...
   m_EditorClassIdentifier: 
   Guid: 3ec63d9252d0a44c3b4ea7707b30bb47
   Position: {x: 32.999893, y: -1392.0004}
@@ -549,6 +594,8 @@ MonoBehaviour:
   - {fileID: -3974068873530576135}
   - {fileID: -6623330606900721193}
   - {fileID: -4954209596611156742}
+  RequiredNodes: []
+  BlockerNodes: []
   PopularityValue: 5
 --- !u!114 &8415505403560475243
 MonoBehaviour:
@@ -560,7 +607,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: PlayerDialogOption
+  m_Name: .......
   m_EditorClassIdentifier: 
   Guid: 9f54fbdf14aee46cb9502961c0cf69f0
   Position: {x: 200.72324, y: -251.9411}
@@ -570,5 +617,7 @@ MonoBehaviour:
   TextPreview: .......
   Children:
   - {fileID: 2038494943355648970}
+  RequiredNodes: []
+  BlockerNodes: []
   answerVibe: 0
   _popularityModifier: 0

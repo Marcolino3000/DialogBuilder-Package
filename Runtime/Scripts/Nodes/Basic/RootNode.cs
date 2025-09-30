@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Nodes.Decorator;
 
 namespace Nodes.Basic
@@ -6,7 +7,7 @@ namespace Nodes.Basic
     {
         public Node Child;
 
-        public override DialogOptionNode[] GetChildNodes()
+        public override List<DialogOptionNode> GetChildNodes()
         {
             return null;
         }

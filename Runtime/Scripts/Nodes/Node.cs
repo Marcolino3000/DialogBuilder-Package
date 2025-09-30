@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Nodes.Decorator;
 using Tree;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace Nodes
         public string DialogLine;
         [HideInInspector] public string TextPreview;
 
-        public abstract DialogOptionNode[] GetChildNodes();
+        public abstract List<DialogOptionNode> GetChildNodes();
 
         private Action<string> OnDialogChanged;
 

@@ -14,6 +14,7 @@ namespace Core
         [Header("Settings")] 
         [SerializeField] private bool showSubtitles;
         [SerializeField] private bool showOptions;
+        [SerializeField] public static float dialogTextSpeed = 0.3f;
         
         [Tooltip("Pick a random option when no option is selected within time span.")]
         [SerializeField] private bool randomPick;

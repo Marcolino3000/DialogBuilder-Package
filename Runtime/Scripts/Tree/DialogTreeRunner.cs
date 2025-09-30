@@ -12,7 +12,7 @@ namespace Tree
     public class DialogTreeRunner : MonoBehaviour
     {
         public DialogTree Tree;
-        public DialogOptionNode[] CurrentNodes;
+        public List<DialogOptionNode> CurrentNodes;
 
         [SerializeField] private DataManager _dataManager;
 
@@ -68,7 +68,7 @@ namespace Tree
                 setter.OnSetDialogTree += SetDialogTree;
             }
 
-            CurrentNodes = SetOptionType(Tree.GetStartingNodes().ToArray());
+            CurrentNodes = SetOptionType(Tree.GetStartingNodes());
         }
 
         public void StartDialog()
@@ -86,7 +86,7 @@ namespace Tree
             foreach (var presenter in _dialogPresenters) 
                 presenter.HideDialogOptions();
             
-            CurrentNodes = SetOptionType(Tree.GetStartingNodes().ToArray());
+            CurrentNodes = SetOptionType(Tree.GetStartingNodes());
             // ExecuteCurrentNodes();
         }
 
@@ -116,6 +116,8 @@ namespace Tree
                     });    
             }
     
+            dialogOption.WasSelected = true;
+            
             StopAllCoroutines();
             StartCoroutine(DisplayDialog(dialogOption));
         }
@@ -140,7 +142,7 @@ namespace Tree
                 receiver.DisplayDialogLine(characterName, paragraph.Item1);
             }
             
-            yield return new WaitForSeconds(paragraph.Item2);
+            yield return new WaitForSeconds(paragraph.Item2 * DialogBuilderHQ.dialogTextSpeed);
 
             foreach (var receiver in _dialogReceivers)
             {
@@ -152,10 +154,53 @@ namespace Tree
         {
             CurrentNodes = SetOptionType(currentNode.GetChildNodes());
             
+            FilterForConditions();
+            
             ExecuteCurrentNodes();
         }
 
-        private DialogOptionNode[] SetOptionType(DialogOptionNode[] nodes)
+        private void FilterForConditions()
+        {
+            foreach (var node in CurrentNodes)
+            {
+                node.WasSelected = false;
+            }
+            
+            CurrentNodes = CurrentNodes
+                .Where(node => CheckConditions(node.RequiredNodes, node.BlockerNodes))
+                .ToList();
+        }
+
+        private bool CheckConditions(List<DialogOptionNode> requiredNodes, List<DialogOptionNode> blockerNodes)
+        {
+            bool requiredFulfilled = false;
+            bool blockerFulfilled = false;
+            
+            if (blockerNodes.IsNullOrEmpty() && requiredNodes.IsNullOrEmpty())
+                return true;
+            
+            if(requiredNodes.IsNullOrEmpty())
+                requiredFulfilled = true;
+
+            else
+            {
+                if (requiredNodes.TrueForAll(n => n.WasSelected))
+                    requiredFulfilled = true;
+            }
+
+            if(blockerNodes.IsNullOrEmpty())
+                blockerFulfilled = true;
+            
+            else
+            {
+                if (!blockerNodes.Any(n => n.WasSelected))
+                    blockerFulfilled = true;
+            }
+            
+            return requiredFulfilled && blockerFulfilled;
+        }
+
+        private List<DialogOptionNode> SetOptionType(List<DialogOptionNode> nodes)
         {
             if(nodes.All(n => n.OptionType == DialogOptionType.NPC))
                 _currentOptionType = DialogOptionType.NPC;
@@ -173,12 +218,12 @@ namespace Tree
         private void SetDialogTree(DialogTree tree)
         {
             Tree = tree;
-            CurrentNodes = SetOptionType(Tree.GetStartingNodes().ToArray());
+            CurrentNodes = SetOptionType(Tree.GetStartingNodes());
         }
 
         private void ExecuteCurrentNodes()
         {
-            if(CurrentNodes == null || CurrentNodes.Length == 0)
+            if(CurrentNodes == null || CurrentNodes.Count == 0)
             {
                 Debug.LogWarning("No more nodes to execute.");
                 return;
@@ -187,10 +232,18 @@ namespace Tree
             //todo:            
             _dialogPresenters.
                 FindAll(p => p.DialogOptionType == _currentOptionType)
-                .ForEach(p => p.ShowDialogOptions(CurrentNodes));
+                .ForEach(p => p.ShowDialogOptions(CurrentNodes.ToArray()));
             
             if(_currentOptionType == DialogOptionType.Player && _activateRandomPickWhenIdle)
                 StartIdleTimer();
+        }
+    }
+    
+    public static class CollectionExtensions
+    {
+        public static bool IsNullOrEmpty<T>(this ICollection<T> collection)
+        {
+            return collection == null || collection.Count == 0;
         }
     }
 }

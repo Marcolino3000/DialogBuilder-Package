@@ -40,6 +40,10 @@ namespace Editor.UIToolkit
      {
          var previewText = CreatePreview(evt.newValue);
          serializedObject.FindProperty("TextPreview").stringValue = previewText;
+         if (serializedObject.targetObject is Node node)
+         {
+             node.name = previewText;
+         }
          serializedObject.ApplyModifiedProperties();
      }
 
