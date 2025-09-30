@@ -14,7 +14,8 @@ namespace Core
         [Header("Settings")] 
         [SerializeField] private bool showSubtitles;
         [SerializeField] private bool showOptions;
-        [SerializeField] public static float dialogTextSpeed = 0.3f;
+        [SerializeField] public static float dialogTextSpeed = 1f;
+        [SerializeField] public float _dialogTextSpeed = 1f;
         
         [Tooltip("Pick a random option when no option is selected within time span.")]
         [SerializeField] private bool randomPick;
@@ -106,6 +107,8 @@ namespace Core
             
             treeRunner.SetOptionsForIdleRandomPick(randomPick, timerUntilRandomPick);
             treeRunner.StartIdleTimer();
+            
+            dialogTextSpeed = _dialogTextSpeed;
         }
         
         private void OnGUI()
