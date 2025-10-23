@@ -43,7 +43,7 @@ namespace Core
             int smallestDifference = int.MaxValue;
             List<NpcDialogOption> closestAnswers = new();
 
-            foreach (var option in options)
+            foreach (var option in options.Where(option => option is NpcDialogOption))
             {
                 if(option is not NpcDialogOption npcOption) continue;
                 

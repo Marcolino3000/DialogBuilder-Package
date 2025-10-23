@@ -11,7 +11,9 @@ namespace Nodes.Decorator
         public virtual DialogOptionType OptionType => DialogOptionType.None;
         public List<Tuple<string, float>> Paragraphs { get; } = new();         
         public float TotalDuration => Paragraphs.Sum(p => p.Item2);
+        public bool FallThrough;
         public bool WasSelected { get; set; }
+        public bool IsAvailable = true;
         public List<DialogOptionNode> RequiredNodes;
         public List<DialogOptionNode> BlockerNodes;
         

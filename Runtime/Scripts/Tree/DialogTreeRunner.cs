@@ -20,8 +20,11 @@ namespace Tree
         private List<IDialogOptionReceiver> _dialogPresenters;
         private List<IDialogStarter> _dialogStarters;
         private List<IDialogTreeSetter> _dialogTreeSetters;
-        private DialogOptionType _currentOptionType;
-
+        
+        private DialogOptionType _currentOptionType; //dopplung entfernen -> durch type-field ersetzen
+        private Type _currentType;
+        private List<DialogOptionNode> _fallThroughNodes;
+        
         private bool _activateRandomPickWhenIdle;
         private float _timerUntilRandomPick = 2f;
         private Coroutine _currentIdleTimer;
@@ -68,6 +71,7 @@ namespace Tree
                 setter.OnSetDialogTree += SetDialogTree;
             }
 
+            _fallThroughNodes = new List<DialogOptionNode>();
             CurrentNodes = SetOptionType(Tree.GetStartingNodes());
         }
 
@@ -117,9 +121,24 @@ namespace Tree
             }
     
             dialogOption.WasSelected = true;
-            
+            _fallThroughNodes.Remove(dialogOption);
+
+            SaveFallThroughNodes();
             StopAllCoroutines();
             StartCoroutine(DisplayDialog(dialogOption));
+        }
+
+        private void SaveFallThroughNodes()
+        {
+            _fallThroughNodes ??= new List<DialogOptionNode>();
+
+            foreach (var node in CurrentNodes)
+            {
+                if(node.FallThrough && !node.WasSelected)
+                {
+                    _fallThroughNodes.Add(node);
+                }
+            }
         }
 
         private IEnumerator DisplayDialog(DialogOptionNode dialogOption)
@@ -212,6 +231,7 @@ namespace Tree
                 return null;
             }
 
+            _currentType = nodes.First().GetType();
             return nodes;
         }
 
@@ -219,8 +239,9 @@ namespace Tree
         {
             Tree = tree;
             CurrentNodes = SetOptionType(Tree.GetStartingNodes());
+            _fallThroughNodes = new List<DialogOptionNode>();
         }
-
+        
         private void ExecuteCurrentNodes()
         {
             if(CurrentNodes == null || CurrentNodes.Count == 0)
@@ -228,14 +249,29 @@ namespace Tree
                 Debug.LogWarning("No more nodes to execute.");
                 return;
             }
+
+            var options = GetCurrentAndFallThroughOptions();
             
-            //todo:            
+            if(options.Length == 0)
+            {
+                Debug.LogWarning("No available dialog options.");
+                return;
+            }
+            
             _dialogPresenters.
                 FindAll(p => p.DialogOptionType == _currentOptionType)
-                .ForEach(p => p.ShowDialogOptions(CurrentNodes.ToArray()));
+                .ForEach(p => p.ShowDialogOptions(options));
             
             if(_currentOptionType == DialogOptionType.Player && _activateRandomPickWhenIdle)
                 StartIdleTimer();
+        }
+
+        private DialogOptionNode[] GetCurrentAndFallThroughOptions()
+        {
+            var fallThrough = _fallThroughNodes.Where(n => n.GetType() == _currentType).ToList();
+            var allOptions = CurrentNodes.Concat(fallThrough);
+            
+            return allOptions.Where(n => n.IsAvailable).ToArray();
         }
     }
     

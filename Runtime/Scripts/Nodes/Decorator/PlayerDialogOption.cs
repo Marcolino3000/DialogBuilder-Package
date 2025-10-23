@@ -9,7 +9,6 @@ namespace Nodes.Decorator
         public int PopularityModifier => _popularityModifier;
         public AnswerVibe Vibe => answerVibe;
 
-
         [SerializeField] private AnswerVibe answerVibe = AnswerVibe.Neutral;
         [SerializeField] private int _popularityModifier;
 
