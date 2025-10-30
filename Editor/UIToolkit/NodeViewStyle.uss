@@ -1,13 +1,13 @@
 #node-border {
     background-color: rgb(58, 58, 58);
-    border-left-color: rgb(41, 41, 41);
-    border-right-color: rgb(41, 41, 41);
-    border-top-color: rgb(41, 41, 41);
-    border-bottom-color: rgb(41, 41, 41);
-    border-top-width: 2px;
-    border-right-width: 2px;
-    border-bottom-width: 2px;
-    border-left-width: 2px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -88,24 +88,6 @@
     -unity-slice-bottom: 3;
 }
 
-:hover > #node-border {
-    border-left-color: rgb(13, 144, 255);
-    border-right-color: rgb(13, 144, 255);
-    border-top-color: rgb(13, 144, 255);
-    border-bottom-color: rgb(13, 144, 255);
-    border-top-width: 2px;
-    border-right-width: 2px;
-    border-bottom-width: 2px;
-    border-left-width: 2px;
-}
-
-:selected > #node-border {
-    border-left-color: rgb(13, 144, 255);
-    border-right-color: rgb(13, 144, 255);
-    border-top-color: rgb(13, 144, 255);
-    border-bottom-color: rgb(13, 144, 255);
-}
-
 .textNode #TextField {
     display: flex;
 }
@@ -115,4 +97,25 @@
     border-right-color: rgb(0, 10, 219);
     border-top-color: rgb(0, 10, 219);
     border-bottom-color: rgb(0, 10, 219);
+}
+
+#node-border:hover {
+    border-left-color: rgb(0, 153, 255);
+    border-right-color: rgb(0, 153, 255);
+    border-top-color: rgb(0, 153, 255);
+    border-bottom-color: rgb(0, 153, 255);
+}
+
+#node-border:selected {
+    border-left-color: rgb(53, 82, 178);
+    border-right-color: rgb(53, 82, 178);
+    border-top-color: rgb(53, 82, 178);
+    border-bottom-color: rgb(53, 82, 178);
+}
+
+#node-border:focus {
+    border-left-color: rgba(217, 0, 0, 0);
+    border-right-color: rgba(217, 0, 0, 0);
+    border-top-color: rgba(217, 0, 0, 0);
+    border-bottom-color: rgba(217, 0, 0, 0);
 }

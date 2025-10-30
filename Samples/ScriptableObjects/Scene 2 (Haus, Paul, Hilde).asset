@@ -23,6 +23,7 @@ MonoBehaviour:
   - {fileID: -5383730266762262135}
   - {fileID: 7977693498305313975}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -47,6 +48,7 @@ MonoBehaviour:
   Children:
   - {fileID: 1326023653020022437}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 0
@@ -75,6 +77,7 @@ MonoBehaviour:
   - {fileID: 2676999720429140291}
   - {fileID: -4663519145765460523}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -99,6 +102,7 @@ MonoBehaviour:
   Children:
   - {fileID: 321336787002640964}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 6
@@ -123,6 +127,7 @@ MonoBehaviour:
   Children:
   - {fileID: -6846182487938745993}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes:
   - {fileID: 428056451835201189}
   BlockerNodes: []
@@ -149,6 +154,7 @@ MonoBehaviour:
   Children:
   - {fileID: 2038494943355648970}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 0
@@ -174,6 +180,7 @@ MonoBehaviour:
   Children:
   - {fileID: 4947966587424837287}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 0
@@ -191,7 +198,7 @@ MonoBehaviour:
   m_Name: "*Die T\xFCr zuknall..."
   m_EditorClassIdentifier: 
   Guid: 28bfc3a3945e94fb4a79bee4eac4d8c0
-  Position: {x: 330.99997, y: -1252}
+  Position: {x: 340.0001, y: -1252}
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "*Die T\xFCr zuknallen*"
@@ -199,6 +206,7 @@ MonoBehaviour:
   Children:
   - {fileID: -6846182487938745993}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 2
@@ -224,6 +232,7 @@ MonoBehaviour:
   Children:
   - {fileID: 8214506094242630894}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 2
@@ -249,6 +258,7 @@ MonoBehaviour:
   Children:
   - {fileID: 1326023653020022437}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 0
@@ -273,6 +283,7 @@ MonoBehaviour:
   TextPreview: 
   Children: []
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -297,6 +308,7 @@ MonoBehaviour:
   Children:
   - {fileID: -6846182487938745993}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 1
@@ -322,6 +334,7 @@ MonoBehaviour:
   Children:
   - {fileID: 321336787002640964}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -338,7 +351,7 @@ MonoBehaviour:
   m_Name: "Woher wei\xDFt du, ..."
   m_EditorClassIdentifier: 
   Guid: aa1d88cc15d2542cc80e83ad77fa8524
-  Position: {x: 32.999893, y: -756.00024}
+  Position: {x: 32.999996, y: -756}
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Woher wei\xDFt du, dass ich wieder in der Stadt bin?"
@@ -346,6 +359,7 @@ MonoBehaviour:
   Children:
   - {fileID: -8406367446726604415}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 0
@@ -405,14 +419,16 @@ MonoBehaviour:
   m_Name: ...toll...
   m_EditorClassIdentifier: 
   Guid: 566325209f1074752a6320fa028c218a
-  Position: {x: 33.000046, y: -994.5207}
+  Position: {x: 33.00003, y: -1001.10895}
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: ...toll...
   TextPreview: ...toll...
   Children:
   - {fileID: 7715138301334161512}
+  - {fileID: 7715138301334161512}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 0
@@ -438,6 +454,7 @@ MonoBehaviour:
   Children:
   - {fileID: -3407515446135090405}
   FallThrough: 1
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 1
@@ -464,6 +481,7 @@ MonoBehaviour:
   TextPreview: Meine Cousine is...
   Children: []
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -490,6 +508,7 @@ MonoBehaviour:
   - {fileID: -7961286758752456900}
   - {fileID: -4340736748771555055}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -514,6 +533,7 @@ MonoBehaviour:
   Children:
   - {fileID: 8214506094242630894}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 0
@@ -539,6 +559,7 @@ MonoBehaviour:
   Children:
   - {fileID: 4947966587424837287}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 0
@@ -566,6 +587,7 @@ MonoBehaviour:
   - {fileID: -6117493512016797897}
   - {fileID: 8415505403560475243}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -582,7 +604,7 @@ MonoBehaviour:
   m_Name: Ja, wir haben ne...
   m_EditorClassIdentifier: 
   Guid: 8fe03e666ff39421fa39a8fada5809cd
-  Position: {x: 33.00006, y: -868.9998}
+  Position: {x: 32.999996, y: -868.05536}
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Ja, wir haben ne S\xE4ngerin engagiert - ich darf noch nicht verraten
@@ -591,6 +613,7 @@ MonoBehaviour:
   Children:
   - {fileID: -1171378232159094076}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -615,6 +638,7 @@ MonoBehaviour:
   Children:
   - {fileID: 4947966587424837287}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 2
@@ -642,6 +666,7 @@ MonoBehaviour:
   - {fileID: -6623330606900721193}
   - {fileID: -4954209596611156742}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 5
@@ -666,6 +691,7 @@ MonoBehaviour:
   Children:
   - {fileID: 2038494943355648970}
   FallThrough: 0
+  IsAvailable: 1
   RequiredNodes: []
   BlockerNodes: []
   answerVibe: 0

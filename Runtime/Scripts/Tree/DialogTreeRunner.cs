@@ -11,6 +11,8 @@ namespace Tree
 {
     public class DialogTreeRunner : MonoBehaviour
     {
+        public event Action<DialogOptionNode> DialogNodeSelected;
+        
         public DialogTree Tree;
         public List<DialogOptionNode> CurrentNodes;
 
@@ -123,6 +125,8 @@ namespace Tree
             dialogOption.WasSelected = true;
             _fallThroughNodes.Remove(dialogOption);
 
+            DialogNodeSelected?.Invoke(dialogOption);
+            
             SaveFallThroughNodes();
             StopAllCoroutines();
             StartCoroutine(DisplayDialog(dialogOption));
