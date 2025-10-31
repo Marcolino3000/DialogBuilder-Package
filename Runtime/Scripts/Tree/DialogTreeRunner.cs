@@ -234,8 +234,10 @@ namespace Tree
                 Debug.LogError("Next nodes have mixed types. This is not supported and should not happen.");
                 return null;
             }
-
-            _currentType = nodes.First().GetType();
+            
+            if(!nodes.IsNullOrEmpty())
+                _currentType = nodes.First().GetType();
+            
             return nodes;
         }
 

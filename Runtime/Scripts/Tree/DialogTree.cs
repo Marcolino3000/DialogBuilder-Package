@@ -40,6 +40,10 @@ namespace Tree
             Undo.RecordObject(this, "Behaviour Tree (Delete Node)");
             nodes.Remove(node);
             
+            
+            if(node is DialogOptionNode dialogOptionNode)
+                StartNodes.Remove(dialogOptionNode);
+            
             // AssetDatabase.RemoveObjectFromAsset(node);
             Undo.DestroyObjectImmediate(node);
             
