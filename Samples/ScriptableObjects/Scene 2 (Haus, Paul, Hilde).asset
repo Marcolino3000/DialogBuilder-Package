@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: "*Die T\xFCr zuknall..."
   m_EditorClassIdentifier: 
   Guid: 28bfc3a3945e94fb4a79bee4eac4d8c0
-  Position: {x: 340.0001, y: -1252}
+  Position: {x: 333.7857, y: -1252}
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "*Die T\xFCr zuknallen*"
