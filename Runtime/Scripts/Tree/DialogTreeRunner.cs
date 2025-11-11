@@ -152,7 +152,10 @@ namespace Tree
                 if (dialogOption is PlayerDialogOption)
                     yield return StartCoroutine(ShowParagraph("Marlene", paragraph));
                 if (dialogOption is NpcDialogOption)
+                {
+                    
                     yield return StartCoroutine(ShowParagraph(Tree.Blackboard.CharacterData.name, paragraph));
+                }
             }
 
             GetNextNode(dialogOption);

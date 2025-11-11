@@ -20,15 +20,15 @@ namespace Core
             _node = node;
             _textField.text = node.DialogLine;
 
-            switch (node.Vibe)
+            switch (node.Type)
             {
-                case AnswerVibe.Positive:
+                case AnswerType.DeepTalk:
                     _textField.color = Color.green;
                     break;
-                case AnswerVibe.Negative:
+                case AnswerType.TrashTalk:
                     _textField.color = Color.red;
                     break;
-                case AnswerVibe.Neutral:
+                case AnswerType.SmallTalk:
                     _textField.color = Color.yellow;
                     break;
             }

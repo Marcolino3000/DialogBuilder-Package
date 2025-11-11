@@ -176,15 +176,15 @@ namespace Editor.UIToolkit
             RemoveFromClassList("negative");
             RemoveFromClassList("positive");
             
-            switch (playerDialogOption.Vibe)
+            switch (playerDialogOption.Type)
             {
-                case AnswerVibe.Neutral:
+                case AnswerType.SmallTalk:
                     AddToClassList("neutral");
                     break;
-                case AnswerVibe.Negative:
+                case AnswerType.TrashTalk:
                     AddToClassList("negative");
                     break;
-                case AnswerVibe.Positive:
+                case AnswerType.DeepTalk:
                     AddToClassList("positive");
                     break;
             }

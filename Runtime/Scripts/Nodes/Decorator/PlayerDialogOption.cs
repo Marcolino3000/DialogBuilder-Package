@@ -7,22 +7,22 @@ namespace Nodes.Decorator
     {
         public override DialogOptionType OptionType => DialogOptionType.Player;
         public int PopularityModifier => _popularityModifier;
-        public AnswerVibe Vibe => answerVibe;
+        public AnswerType Type => answerType;
 
-        [SerializeField] private AnswerVibe answerVibe = AnswerVibe.Neutral;
+        [SerializeField] private AnswerType answerType = AnswerType.SmallTalk;
         [SerializeField] private int _popularityModifier;
 
         private void OnValidate()
         {
-            switch (answerVibe)
+            switch (answerType)
             {
-                case AnswerVibe.Neutral:
+                case AnswerType.SmallTalk:
                     _popularityModifier = 0;
                     break;
-                case AnswerVibe.Positive:
+                case AnswerType.DeepTalk:
                     _popularityModifier = 5;
                     break;
-                case AnswerVibe.Negative:
+                case AnswerType.TrashTalk:
                     _popularityModifier = -5;
                     break;
                 default:
@@ -37,10 +37,11 @@ namespace Nodes.Decorator
         //List<Hint> Hints;
     }
 
-    public enum AnswerVibe
+    public enum AnswerType
     {
-        Neutral,
-        Positive,
-        Negative
+        SmallTalk,
+        DeepTalk,
+        TrashTalk,
+        BusinessTalk
     }
 }
