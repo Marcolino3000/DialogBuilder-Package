@@ -10,11 +10,13 @@ namespace Core
     public class CharacterData : ScriptableObject
     {
         public Sprite Icon;
-
-        public List<PlayerDialogOption> OptionsToUnlockOnThreshold;
-
+        
+        [Header("Runtime Data")]
+        public int CurrentPopularity;
+        
         [Header("Relationship Data")] 
         
+        public List<PlayerDialogOption> OptionsToUnlockOnThreshold;
         public int TrustThreshold;
         [Range(-20, 20)]
         public int BasePopularity; //todo: durch enums ersetzen?
@@ -35,9 +37,14 @@ namespace Core
                 }
             };
         }
-
-        public void UnlockTrustDialogOptions()
+        
+        public void ApplyPopularityModifier(int modifier)
         {
+            CurrentPopularity += modifier;
+
+            if (!(CurrentPopularity > TrustThreshold))
+                return;
+            
             foreach (var option in OptionsToUnlockOnThreshold)
             {
                 option.IsAvailable = true;

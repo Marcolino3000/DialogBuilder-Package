@@ -112,14 +112,13 @@ namespace Tree
 
         private void HandleOptionSelected(DialogOptionNode dialogOption)
         {
-            //todo: movo to dataManager-module
             if (dialogOption is PlayerDialogOption playerDialogOption)
             {
-                characterDataManager.AddPlayerDialogChoiceEffects(
-                    new PlayerDialogChoiceEffects
-                    {
-                        PopularityModifier = playerDialogOption.PopularityModifier
-                    });    
+                if(Tree.Blackboard.CharacterData != null)
+                    Tree.Blackboard.CharacterData.ApplyPopularityModifier(playerDialogOption.PopularityModifier);
+
+                else
+                    Debug.LogWarning("CharacterData was null");
             }
     
             dialogOption.WasSelected = true;

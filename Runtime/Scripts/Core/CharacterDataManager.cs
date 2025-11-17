@@ -48,7 +48,7 @@ namespace Core
 
             if (relationshipData.CurrentPopularity >= _currentCharacter.TrustThreshold)
             {
-                _currentCharacter.UnlockTrustDialogOptions();
+                // _currentCharacter.UnlockTrustDialogOptions();
             }
             
             UpdateCharacterNameAndValue();
