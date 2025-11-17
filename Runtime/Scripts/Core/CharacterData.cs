@@ -20,7 +20,6 @@ namespace Core
         
         [Header("Relationship Data")] 
         
-        // public List<PlayerDialogOption> OptionsToUnlockOnThreshold;
         public int TrustThreshold;
         [Range(-20, 20)]
         public int BasePopularity; //todo: durch enums ersetzen?

@@ -58,7 +58,8 @@ namespace Editor.UIToolkit
         public void PopulateView(DialogTree tree)
         {
             _tree = tree;
-
+            _tree.AssignBlackboardToNodes();
+            
             graphViewChanged -= OnGraphViewChanged;
             DeleteElements(graphElements);
             graphViewChanged += OnGraphViewChanged;

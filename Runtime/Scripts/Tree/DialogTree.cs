@@ -14,6 +14,7 @@ namespace Tree
         public List<DialogOptionNode> StartNodes;
         public List<Node> nodes = new();
         public Blackboard Blackboard = new();
+        //private BlackboardAssignmentDirty-bool?
 
         public Node CreateNode(Type type)
         {
@@ -121,6 +122,14 @@ namespace Tree
             }
 
             return children;
+        }
+        
+        public void AssignBlackboardToNodes()
+        {
+            if(Blackboard == null)
+                return;
+            
+            nodes.ForEach(n => n.Blackboard = Blackboard);
         }
 
         // public void Traverse(Node node, System.Action<Node> visitor)
