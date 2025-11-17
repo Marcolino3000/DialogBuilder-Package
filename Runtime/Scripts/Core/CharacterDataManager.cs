@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public class DataManager : MonoBehaviour
+    public class CharacterDataManager : MonoBehaviour
     {
         public string CurrentCharacterName;
         public int CurrentPopularity;
@@ -43,7 +43,13 @@ namespace Core
 
         public void AddPlayerDialogChoiceEffects(PlayerDialogChoiceEffects playerDialogChoiceEffects)
         {
-            Characters[_currentCharacter].CurrentPopularity += playerDialogChoiceEffects.PopularityModifier;
+            var relationshipData = Characters[_currentCharacter];
+            relationshipData.CurrentPopularity += playerDialogChoiceEffects.PopularityModifier;
+
+            if (relationshipData.CurrentPopularity >= _currentCharacter.TrustThreshold)
+            {
+                _currentCharacter.UnlockTrustDialogOptions();
+            }
             
             UpdateCharacterNameAndValue();
         }

@@ -16,7 +16,7 @@ namespace Tree
         public DialogTree Tree;
         public List<DialogOptionNode> CurrentNodes;
 
-        [SerializeField] private DataManager _dataManager;
+        [SerializeField] private CharacterDataManager characterDataManager;
 
         private List<IDialogReceiver> _dialogReceivers;
         private List<IDialogOptionReceiver> _dialogPresenters;
@@ -115,7 +115,7 @@ namespace Tree
             //todo: movo to dataManager-module
             if (dialogOption is PlayerDialogOption playerDialogOption)
             {
-                _dataManager.AddPlayerDialogChoiceEffects(
+                characterDataManager.AddPlayerDialogChoiceEffects(
                     new PlayerDialogChoiceEffects
                     {
                         PopularityModifier = playerDialogOption.PopularityModifier
