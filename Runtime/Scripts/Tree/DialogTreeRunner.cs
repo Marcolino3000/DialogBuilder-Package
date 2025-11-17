@@ -193,7 +193,22 @@ namespace Tree
             
             CurrentNodes = CurrentNodes
                 .Where(node => CheckConditions(node.RequiredNodes, node.BlockerNodes))
+                .Where(CheckTrustLevel)
                 .ToList();
+        }
+
+        private bool CheckTrustLevel(DialogOptionNode node)
+        {
+            if (!node.IsTrustOption)
+                return true;
+
+            if (Tree.Blackboard.CharacterData == null)
+            {
+                Debug.LogWarning("CharacterData was not Set in Blackboard. Trust-level was not checked");
+                return true;
+            }
+
+            return Tree.Blackboard.CharacterData.TrustsPlayer;
         }
 
         private bool CheckConditions(List<DialogOptionNode> requiredNodes, List<DialogOptionNode> blockerNodes)

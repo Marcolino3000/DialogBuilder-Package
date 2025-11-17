@@ -14,6 +14,7 @@ namespace Nodes.Decorator
         public bool FallThrough;
         public bool WasSelected { get; set; }
         public bool IsAvailable = true;
+        public bool IsTrustOption = false;
         public List<DialogOptionNode> RequiredNodes;
         public List<DialogOptionNode> BlockerNodes;
         

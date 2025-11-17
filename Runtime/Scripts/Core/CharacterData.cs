@@ -13,10 +13,11 @@ namespace Core
         
         [Header("Runtime Data")]
         public int CurrentPopularity;
+        public bool TrustsPlayer => CurrentPopularity >= TrustThreshold;
         
         [Header("Relationship Data")] 
         
-        public List<PlayerDialogOption> OptionsToUnlockOnThreshold;
+        // public List<PlayerDialogOption> OptionsToUnlockOnThreshold;
         public int TrustThreshold;
         [Range(-20, 20)]
         public int BasePopularity; //todo: durch enums ersetzen?
@@ -28,27 +29,13 @@ namespace Core
         {
             EditorApplication.playModeStateChanged += mode =>
             {
-                if (mode == PlayModeStateChange.EnteredPlayMode)
-                {
-                    foreach (var option in OptionsToUnlockOnThreshold)
-                    {
-                        option.IsAvailable = false;
-                    }
-                }
+                CurrentPopularity = BasePopularity;
             };
         }
         
         public void ApplyPopularityModifier(int modifier)
         {
             CurrentPopularity += modifier;
-
-            if (!(CurrentPopularity > TrustThreshold))
-                return;
-            
-            foreach (var option in OptionsToUnlockOnThreshold)
-            {
-                option.IsAvailable = true;
-            }
         }
     }
 }
