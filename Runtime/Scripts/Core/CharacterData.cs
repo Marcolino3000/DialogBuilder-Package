@@ -9,11 +9,14 @@ namespace Core
     [CreateAssetMenu]
     public class CharacterData : ScriptableObject
     {
+        public event Action OnPopularityThresholdReached;
+        
         public Sprite Icon;
         
         [Header("Runtime Data")]
         public int CurrentPopularity;
         public bool TrustsPlayer => CurrentPopularity >= TrustThreshold;
+        public bool BondedWithPlayer;
         
         [Header("Relationship Data")] 
         
@@ -36,6 +39,11 @@ namespace Core
         public void ApplyPopularityModifier(int modifier)
         {
             CurrentPopularity += modifier;
+            
+            if (CurrentPopularity >= TrustThreshold)
+            {
+                OnPopularityThresholdReached?.Invoke();
+            }
         }
     }
 }
