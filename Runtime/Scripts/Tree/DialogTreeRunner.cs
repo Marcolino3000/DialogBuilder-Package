@@ -158,7 +158,6 @@ namespace Tree
                     yield return StartCoroutine(ShowParagraph("Marlene", paragraph));
                 if (dialogOption is NpcDialogOption)
                 {
-                    
                     yield return StartCoroutine(ShowParagraph(Tree.Blackboard.CharacterData.name, paragraph));
                 }
             }

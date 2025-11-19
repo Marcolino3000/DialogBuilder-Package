@@ -25,8 +25,6 @@ namespace Nodes.Decorator
                 case AnswerType.TrashTalk:
                     _popularityModifier = -5;
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         }
     }
@@ -42,6 +40,7 @@ namespace Nodes.Decorator
         SmallTalk,
         DeepTalk,
         TrashTalk,
-        BusinessTalk
+        BusinessTalk,
+        SelfTalk
     }
 }
