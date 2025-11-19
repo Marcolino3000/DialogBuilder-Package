@@ -15,6 +15,7 @@ namespace Nodes.Decorator
         public bool WasSelected { get; set; }
         public bool IsAvailable = true;
         public bool IsTrustOption = false;
+        public bool IsBondingOption = false;
         public List<DialogOptionNode> RequiredNodes;
         public List<DialogOptionNode> BlockerNodes;
         
