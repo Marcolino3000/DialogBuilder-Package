@@ -32,6 +32,7 @@ namespace Core
             EditorApplication.playModeStateChanged += mode =>
             {
                 CurrentPopularity = BasePopularity;
+                BondedWithPlayer = false;
             };
         }
         

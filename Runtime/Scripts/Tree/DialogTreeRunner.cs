@@ -87,6 +87,8 @@ namespace Tree
 
         public void Reset()
         {
+            IsDialogRunning = false;
+            OnDialogRunningStatusChanged?.Invoke(false);
             StopAllCoroutines();
 
             foreach (var receiver in _dialogReceivers)
