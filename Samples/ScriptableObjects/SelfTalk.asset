@@ -39,7 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e86e6013fb5415d9fc88ab06a37cd42, type: 3}
   m_Name: SelfTalk
   m_EditorClassIdentifier: 
-  StartNodes: []
+  StartNodes:
+  - {fileID: -6996447193581630414}
   nodes:
   - {fileID: -6996447193581630414}
   Blackboard:

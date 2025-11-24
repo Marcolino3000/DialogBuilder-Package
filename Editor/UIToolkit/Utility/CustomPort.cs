@@ -4,7 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Nodes.Utility
+namespace Editor.UIToolkit.Utility
 {
   public class CustomPort : Port
   {
