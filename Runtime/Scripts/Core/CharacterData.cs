@@ -1,8 +1,8 @@
 using System;
-using System.Collections.Generic;
-using Nodes.Decorator;
-using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Core
 {
@@ -25,8 +25,8 @@ namespace Core
         public int BasePopularity; //todo: durch enums ersetzen?
         [Range(0, 2)]
         public float Influenceability;
-
-
+        
+    #if UNITY_EDITOR
         private void OnEnable()
         {
             EditorApplication.playModeStateChanged += mode =>
@@ -35,6 +35,7 @@ namespace Core
                 BondedWithPlayer = false;
             };
         }
+    #endif
         
         public void ApplyPopularityModifier(int modifier)
         {

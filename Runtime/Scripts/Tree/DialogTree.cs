@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using Nodes;
 using Nodes.Basic;
 using Nodes.Decorator;
-using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Tree
 {
@@ -16,6 +18,7 @@ namespace Tree
         public Blackboard Blackboard = new();
         //private BlackboardAssignmentDirty-bool?
 
+        #if UNITY_EDITOR
         public Node CreateNode(Type type)
         {
             Node node = CreateInstance(type) as Node;
@@ -100,6 +103,28 @@ namespace Tree
             }
         }
 
+        public DialogTree Clone()
+        {
+            DialogTree tree = Instantiate(this);
+            // tree.RootNodes = tree.RootNodes.Clone();
+            // tree.nodes = new List<Node>();
+            //
+            // Traverse(tree.RootNodes, n =>
+            // {
+            //     tree.nodes.Add(n); 
+            // });
+            
+            return tree;
+        }
+
+        public void AddStartNode(DialogOptionNode node)
+        {
+            StartNodes.Add(node);
+            EditorUtility.SetDirty(this);
+        }
+        
+#endif
+
         public List<Node> GetChildren(Node parent)
         {
             List<Node> children = new();
@@ -123,7 +148,7 @@ namespace Tree
 
             return children;
         }
-        
+
         public void AssignBlackboardToNodes()
         {
             if(Blackboard == null)
@@ -133,29 +158,24 @@ namespace Tree
         }
 
         // public void Traverse(Node node, System.Action<Node> visitor)
+
         // {
+
         //     if (node)
+
         //     {
+
         //         visitor.Invoke(node);
+
         //         var children = GetChildren(node);
+
         //         children.ForEach(n => Traverse(n ,visitor));
+
         //     }
+
         // }
-        
-        public DialogTree Clone()
-        {
-            DialogTree tree = Instantiate(this);
-            // tree.RootNodes = tree.RootNodes.Clone();
-            // tree.nodes = new List<Node>();
-            //
-            // Traverse(tree.RootNodes, n =>
-            // {
-            //     tree.nodes.Add(n); 
-            // });
-            
-            return tree;
-        }
-        
+
+
         public List<DialogOptionNode> GetStartingNodes()
         {
             if (StartNodes == null || StartNodes.Count == 0 || StartNodes[0] is not DialogOptionNode)
@@ -165,12 +185,6 @@ namespace Tree
             }
             
             return StartNodes;
-        }
-
-        public void AddStartNode(DialogOptionNode node)
-        {
-            StartNodes.Add(node);
-            EditorUtility.SetDirty(this);
         }
     }
 }
