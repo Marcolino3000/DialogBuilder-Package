@@ -23,7 +23,6 @@ namespace Core
         [SerializeField] private float timerUntilRandomPick = 5f;
         
         [SerializeField] private DialogOptionPresenter dialogOptionPresenter;
-        // [SerializeField] private GameObject dialogOptionContainer;
         [SerializeField] private DecisionHandler decisionHandler;
         [SerializeField] private SubtitlePresenter subtitlePresenter;
         [SerializeField] private DialogTreeRunner treeRunner;
@@ -114,8 +113,9 @@ namespace Core
         
         private void OnGUI()
          {
-             dialogTextSpeed = GUILayout.HorizontalSlider(dialogTextSpeed, 0.2f, 5.0f);
-             
+             dialogTextSpeed = GUILayout.HorizontalSlider(dialogTextSpeed, 0.7f, 5.0f);
+             GUILayout.Label("Text speed: " + dialogTextSpeed, GUILayout.ExpandHeight(false), GUILayout.ExpandWidth(false), GUILayout.Width(130) , GUILayout.Height(20));
+
              if (GUILayout.Button("Reset Dialog")) 
                  treeRunner.Reset();
 
