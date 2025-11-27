@@ -312,9 +312,14 @@ namespace Tree
                 return;
             }
             
-            _dialogPresenters.
-                FindAll(p => p.DialogOptionType == _currentOptionType)
-                .ForEach(p => p.ShowDialogOptions(options));
+            var nodesOfCurrentType = _dialogPresenters.FindAll(p => p.DialogOptionType == _currentOptionType);
+            
+            foreach (var node in nodesOfCurrentType)
+            {
+                node.ShowDialogOptions(options);
+            }
+            
+                // .ForEach(p => p.ShowDialogOptions(options));
             
             if(_currentOptionType == DialogOptionType.Player && _activateRandomPickWhenIdle)
                 StartIdleTimer();
