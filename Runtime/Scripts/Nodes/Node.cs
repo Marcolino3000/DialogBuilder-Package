@@ -12,7 +12,7 @@ namespace Nodes
         [HideInInspector] public Vector2 Position;
         public Blackboard Blackboard;
         public string DialogLine;
-        [HideInInspector] public string TextPreview;
+        public string TextPreview;
 
         public abstract List<DialogOptionNode> GetChildNodes();
 
