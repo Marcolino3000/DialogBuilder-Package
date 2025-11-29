@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 0b489bd3d10514238b00e3b19ec316ab
   Position: {x: 33.000008, y: -640}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: Ja ich bin dir gefolgt.
@@ -24,6 +25,8 @@ MonoBehaviour:
   - {fileID: 7977693498305313975}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -41,6 +44,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: ab3a0fb0d4ed6471db056e0f7d7cf311
   Position: {x: -103.00012, y: 8.999964}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Ich wei\xDF gar nicht mehr warum ich dich damals so unangenehm fand."
@@ -49,9 +53,11 @@ MonoBehaviour:
   - {fileID: 1326023653020022437}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 0
+  answerType: 0
   _popularityModifier: 0
 --- !u!114 &-7424378223682006677
 MonoBehaviour:
@@ -66,7 +72,8 @@ MonoBehaviour:
   m_Name: Hey Marlene, sch...
   m_EditorClassIdentifier: 
   Guid: f6cde50405b9f4f5e9e5c440c9d78f41
-  Position: {x: 32.99999, y: -1652.5763}
+  Position: {x: 32.999992, y: -1688}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Hey Marlene, sch\xF6n dich zu sehen. \nSchade, dass es mit uns damals
@@ -78,6 +85,8 @@ MonoBehaviour:
   - {fileID: -4663519145765460523}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -95,6 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 843f1d9a9fd1a49eaa38c429074e9c2e
   Position: {x: 33.000015, y: -1121}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: Also ich wollte dich (trotzdem) einladen.
@@ -103,6 +113,8 @@ MonoBehaviour:
   - {fileID: 321336787002640964}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 6
@@ -120,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 1745f08e30e9d44d4aa5740786c31a5a
   Position: {x: 32.999878, y: -1252.0002}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: Das war nur ironisch... also das...
@@ -128,10 +141,12 @@ MonoBehaviour:
   - {fileID: -6846182487938745993}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes:
   - {fileID: 428056451835201189}
   BlockerNodes: []
-  answerVibe: 0
+  answerType: 0
   _popularityModifier: 0
 --- !u!114 &-6117493512016797897
 MonoBehaviour:
@@ -147,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: d16f82123a64e417283cd6c818b471eb
   Position: {x: -102.999916, y: -251.99994}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: Ou-kayyy....(???)
@@ -155,9 +171,11 @@ MonoBehaviour:
   - {fileID: 2038494943355648970}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 0
+  answerType: 0
   _popularityModifier: 0
 --- !u!114 &-5383730266762262135
 MonoBehaviour:
@@ -173,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 89d8c4306fa70410c956ceee54f8cb23
   Position: {x: 32.999893, y: -511.00012}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Ja... aber woher wei\xDFt du, dass ich wieder da bin?"
@@ -181,9 +200,11 @@ MonoBehaviour:
   - {fileID: 4947966587424837287}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 0
+  answerType: 0
   _popularityModifier: 0
 --- !u!114 &-4954209596611156742
 MonoBehaviour:
@@ -199,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 28bfc3a3945e94fb4a79bee4eac4d8c0
   Position: {x: 333.7857, y: -1252}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "*Die T\xFCr zuknallen*"
@@ -207,10 +229,12 @@ MonoBehaviour:
   - {fileID: -6846182487938745993}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 2
-  _popularityModifier: -5
+  answerType: 0
+  _popularityModifier: 0
 --- !u!114 &-4663519145765460523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: f258f2f47c0144f848080ea5db99bdc3
   Position: {x: 366.91696, y: -1518.9998}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "*Die T\xFCr zuknallen*"
@@ -233,10 +258,12 @@ MonoBehaviour:
   - {fileID: 8214506094242630894}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 2
-  _popularityModifier: -5
+  answerType: 0
+  _popularityModifier: 0
 --- !u!114 &-4340736748771555055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: aadadd9fbb502439497a04faec9fb5b1
   Position: {x: 201, y: 8.999957}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: Genau, ja, Autorin, genau.
@@ -259,9 +287,11 @@ MonoBehaviour:
   - {fileID: 1326023653020022437}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 0
+  answerType: 0
   _popularityModifier: 0
 --- !u!114 &-4101616213120827883
 MonoBehaviour:
@@ -277,6 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 89cdc76bd997b4252a5919ecd5d057ef
   Position: {x: -2688.881, y: -825.93616}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: 
@@ -284,6 +315,8 @@ MonoBehaviour:
   Children: []
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -301,6 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: dfbf78454523649e2bbf462445114dc6
   Position: {x: -269, y: -1252}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Sch\xF6n f\xFCr euch."
@@ -309,10 +343,12 @@ MonoBehaviour:
   - {fileID: -6846182487938745993}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 1
-  _popularityModifier: 5
+  answerType: 0
+  _popularityModifier: 0
 --- !u!114 &-3407515446135090405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,6 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 8a9762077393449059f7de9f0bbb2007
   Position: {x: -721.53467, y: -1392}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: Fall-Through-Answer
@@ -335,6 +372,8 @@ MonoBehaviour:
   - {fileID: 321336787002640964}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -352,6 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: aa1d88cc15d2542cc80e83ad77fa8524
   Position: {x: 32.999996, y: -756}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Woher wei\xDFt du, dass ich wieder in der Stadt bin?"
@@ -360,9 +400,11 @@ MonoBehaviour:
   - {fileID: -8406367446726604415}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 0
+  answerType: 0
   _popularityModifier: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -416,22 +458,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0bd1f85e094e118b634ba4dd916b80, type: 3}
-  m_Name: ...toll...
+  m_Name: ...toll..
   m_EditorClassIdentifier: 
   Guid: 566325209f1074752a6320fa028c218a
   Position: {x: 33.00003, y: -1001.10895}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
-  DialogLine: ...toll...
-  TextPreview: ...toll...
+  DialogLine: ...toll..
+  TextPreview: ...toll..
   Children:
   - {fileID: 7715138301334161512}
   - {fileID: 7715138301334161512}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 0
+  answerType: 0
   _popularityModifier: 0
 --- !u!114 &428056451835201189
 MonoBehaviour:
@@ -447,6 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: a0e6e9d6a73d64fd7a9e83c0bb9bf2df
   Position: {x: -269, y: -1519}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: Bitte gib mir noch eine Chance!
@@ -455,10 +501,12 @@ MonoBehaviour:
   - {fileID: -3407515446135090405}
   FallThrough: 1
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 1
-  _popularityModifier: 5
+  answerType: 0
+  _popularityModifier: 0
 --- !u!114 &1326023653020022437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,6 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 7817c4f6fd466408ca8dbf7e800b01ff
   Position: {x: 31.999798, y: 141.99998}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Meine Cousine ist ja auch Autorin.\n\"Verloren im Kuss der Sehnsucht\"
@@ -482,6 +531,8 @@ MonoBehaviour:
   Children: []
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -499,6 +550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: ffe2cac9dd35c43dfb85fcb31fca6b72
   Position: {x: 31.999872, y: -122.67145}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Bist du jetzt Autorin geworden, wie du immer gesagt hast?\nDas Intellektuelle
@@ -509,6 +561,8 @@ MonoBehaviour:
   - {fileID: -4340736748771555055}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -526,6 +580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: ad9c59c6a9a2e4f8181355fbda4c1ad3
   Position: {x: 32.999878, y: -1519.0002}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: Du warst der einzige der das schade fand.
@@ -534,9 +589,11 @@ MonoBehaviour:
   - {fileID: 8214506094242630894}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 0
+  answerType: 0
   _popularityModifier: 0
 --- !u!114 &4346923093556952275
 MonoBehaviour:
@@ -552,6 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 9d198800efbd349b298f08888958e276
   Position: {x: -267.00006, y: -511.00012}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "\xC4hm magst du das erkl\xE4ren?"
@@ -560,9 +618,11 @@ MonoBehaviour:
   - {fileID: 4947966587424837287}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 0
+  answerType: 0
   _popularityModifier: 0
 --- !u!114 &4947966587424837287
 MonoBehaviour:
@@ -578,6 +638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 84cecfb87840549aa8e098dff7924cd1
   Position: {x: 32.9999, y: -383.04337}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Ja also ich hab ein \xDCberwachungsprogramm geschrieben.\nDas erkennt
@@ -588,6 +649,8 @@ MonoBehaviour:
   - {fileID: 8415505403560475243}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -605,6 +668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 8fe03e666ff39421fa39a8fada5809cd
   Position: {x: 32.999996, y: -868.05536}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "Ja, wir haben ne S\xE4ngerin engagiert - ich darf noch nicht verraten
@@ -614,6 +678,8 @@ MonoBehaviour:
   - {fileID: -1171378232159094076}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 0
@@ -631,6 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 59189dc26764a4c8a9ade9629174ac8e
   Position: {x: 340.00006, y: -511.00003}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: "*T\xFCr schlie\xDFen.*"
@@ -639,10 +706,12 @@ MonoBehaviour:
   - {fileID: 4947966587424837287}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 2
-  _popularityModifier: -5
+  answerType: 0
+  _popularityModifier: 0
 --- !u!114 &8214506094242630894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,7 +725,8 @@ MonoBehaviour:
   m_Name: Ich heirate jetz...
   m_EditorClassIdentifier: 
   Guid: 3ec63d9252d0a44c3b4ea7707b30bb47
-  Position: {x: 32.999893, y: -1392.0004}
+  Position: {x: 32.999886, y: -1392}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: Ich heirate jetzt die Betina.
@@ -667,6 +737,8 @@ MonoBehaviour:
   - {fileID: -4954209596611156742}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
   PopularityValue: 5
@@ -684,6 +756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 9f54fbdf14aee46cb9502961c0cf69f0
   Position: {x: 200.72324, y: -251.9411}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 11400000, guid: 02546d8373e6c4db49dab48dd3cd41bc, type: 2}
   DialogLine: .......
@@ -692,7 +765,9 @@ MonoBehaviour:
   - {fileID: 2038494943355648970}
   FallThrough: 0
   IsAvailable: 1
+  IsTrustOption: 0
+  IsBondingOption: 0
   RequiredNodes: []
   BlockerNodes: []
-  answerVibe: 0
+  answerType: 0
   _popularityModifier: 0

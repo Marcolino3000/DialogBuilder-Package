@@ -10,9 +10,11 @@ namespace Nodes
     {
         [HideInInspector] public string Guid;
         [HideInInspector] public Vector2 Position;
+        [HideInInspector] public bool customPreview;
         public Blackboard Blackboard;
         public string DialogLine;
         public string TextPreview;
+
 
         public abstract List<DialogOptionNode> GetChildNodes();
 
