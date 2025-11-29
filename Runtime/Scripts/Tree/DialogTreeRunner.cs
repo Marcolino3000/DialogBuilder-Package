@@ -11,7 +11,7 @@ namespace Tree
 {
     public class DialogTreeRunner : MonoBehaviour
     {
-        public static event Action<bool> OnDialogRunningStatusChanged;
+        public static event Action<bool, DialogTree> OnDialogRunningStatusChanged;
         public event Action<DialogOptionNode> DialogNodeSelected;
 
         public bool IsDialogRunning;
@@ -88,7 +88,7 @@ namespace Tree
         public void Reset()
         {
             IsDialogRunning = false;
-            OnDialogRunningStatusChanged?.Invoke(false);
+            OnDialogRunningStatusChanged?.Invoke(false, Tree);
             StopAllCoroutines();
 
             foreach (var receiver in _dialogReceivers)
@@ -296,12 +296,12 @@ namespace Tree
             if(CurrentNodes == null || CurrentNodes.Count == 0)
             {
                 Debug.LogWarning("No more nodes to execute.");
-                OnDialogRunningStatusChanged?.Invoke(false);
+                OnDialogRunningStatusChanged?.Invoke(false, Tree);
                 IsDialogRunning = false;
                 return;
             }
             
-            OnDialogRunningStatusChanged?.Invoke(true);
+            OnDialogRunningStatusChanged?.Invoke(true, Tree);
             IsDialogRunning = true;
 
             var options = GetCurrentAndFallThroughOptions();
