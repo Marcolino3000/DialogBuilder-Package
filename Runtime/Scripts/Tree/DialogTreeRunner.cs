@@ -12,7 +12,7 @@ namespace Tree
     public class DialogTreeRunner : MonoBehaviour
     {
         public static event Action<bool, DialogTree> OnDialogRunningStatusChanged;
-        public event Action<DialogOptionNode> DialogNodeSelected;
+        public static event Action<DialogOptionNode> DialogNodeSelected;
 
         public bool IsDialogRunning;
         
