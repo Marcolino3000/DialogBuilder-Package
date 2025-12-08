@@ -5,6 +5,6 @@ namespace Core
 {
     public interface IDialogTreeSetter : IDialogInterface
     {
-        event Action<DialogTree> OnSetDialogTree;
+        event Action<DialogTree, Action<bool>> OnSetDialogTree;
     }
 }

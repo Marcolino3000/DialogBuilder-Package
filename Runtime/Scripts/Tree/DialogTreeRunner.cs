@@ -18,6 +18,7 @@ namespace Tree
         
         public DialogTree Tree;
         public List<DialogOptionNode> CurrentNodes;
+        public Action<bool> OnDialogTreeFinished;
 
         [SerializeField] private CharacterDataManager characterDataManager;
 
@@ -89,6 +90,8 @@ namespace Tree
         {
             IsDialogRunning = false;
             OnDialogRunningStatusChanged?.Invoke(false, Tree);
+            OnDialogTreeFinished?.Invoke(false);
+            OnDialogTreeFinished = null;
             StopAllCoroutines();
 
             foreach (var receiver in _dialogReceivers)
@@ -284,11 +287,12 @@ namespace Tree
             return nodes;
         }
 
-        private void SetDialogTree(DialogTree tree)
+        private void SetDialogTree(DialogTree tree, Action<bool> onDialogFinishedCallback)
         {
             Tree = tree;
             CurrentNodes = SetOptionType(Tree.GetStartingNodes());
             _fallThroughNodes = new List<DialogOptionNode>();
+            OnDialogTreeFinished = onDialogFinishedCallback;
         }
         
         private void ExecuteCurrentNodes()
@@ -298,6 +302,8 @@ namespace Tree
                 Debug.LogWarning("No more nodes to execute.");
                 OnDialogRunningStatusChanged?.Invoke(false, Tree);
                 IsDialogRunning = false;
+                OnDialogTreeFinished?.Invoke(true);
+                OnDialogTreeFinished = null;
                 return;
             }
             
