@@ -56,16 +56,17 @@ namespace Tree
             _dialogStarters = starters;
             _dialogTreeSetters = treeSetters;
             
-            
             foreach (var presenter in presenters)
             {
                 presenter.DialogOptionSelected += HandleOptionSelected;
-                presenter.HideDialogOptions();
+                // presenter.HideDialogOptions();
             }
 
-            foreach (var receiver in receivers) 
-                receiver.HideDialogLine();
+            // foreach (var receiver in receivers) 
+            //     receiver.HideDialogLine();
 
+            HideDialog();
+            
             foreach (var starter in starters)
             {
                 starter.OnStartDialog += ExecuteCurrentNodes;
@@ -94,14 +95,19 @@ namespace Tree
             OnDialogTreeFinished = null;
             StopAllCoroutines();
 
+            HideDialog();
+
+            CurrentNodes = SetOptionType(Tree.GetStartingNodes());
+            // ExecuteCurrentNodes();
+        }
+
+        private void HideDialog()
+        {
             foreach (var receiver in _dialogReceivers)
                 receiver.HideDialogLine();
 
             foreach (var presenter in _dialogPresenters) 
                 presenter.HideDialogOptions();
-            
-            CurrentNodes = SetOptionType(Tree.GetStartingNodes());
-            // ExecuteCurrentNodes();
         }
 
         public void SetOptionsForIdleRandomPick(bool activate, float time)
@@ -182,10 +188,10 @@ namespace Tree
             
             yield return new WaitForSeconds(paragraph.Item2 * 1 / DialogBuilderHQ.dialogTextSpeed);
 
-            foreach (var receiver in _dialogReceivers)
-            {
-                receiver.HideDialogLine();
-            }
+            // foreach (var receiver in _dialogReceivers)
+            // {
+            //     receiver.HideDialogLine();
+            // }
         }
 
         private void GetNextNode(Node currentNode)
@@ -301,6 +307,7 @@ namespace Tree
             {
                 Debug.LogWarning("No more nodes to execute.");
                 OnDialogRunningStatusChanged?.Invoke(false, Tree);
+                HideDialog();
                 IsDialogRunning = false;
                 OnDialogTreeFinished?.Invoke(true);
                 OnDialogTreeFinished = null;
