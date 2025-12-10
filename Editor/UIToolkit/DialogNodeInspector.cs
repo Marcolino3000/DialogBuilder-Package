@@ -4,6 +4,7 @@ using Nodes;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Editor.UIToolkit
@@ -36,7 +37,7 @@ namespace Editor.UIToolkit
          customPreviewToggle.bindingPath = "customPreview";
          customPreviewToggle.Bind(serializedObject);
          
-         customPreviewToggle.RegisterValueChangedCallback(HandleCustomPreviewChanged);
+         customPreviewToggle.RegisterValueChangedCallback(HandleCustomPreviewToggleChanged);
          
          root.Add(customPreviewToggle);
          root.Add(DialogTextFieldLabel);
@@ -45,9 +46,16 @@ namespace Editor.UIToolkit
          return root;
      }
 
-     private void HandleCustomPreviewChanged(ChangeEvent<bool> evt)
+     private void HandleCustomPreviewToggleChanged(ChangeEvent<bool> evt)
      {
-         // CustomPreview = evt.newValue;
+         var node = serializedObject.targetObject as Node;
+         if (node == null)
+             return;
+         
+         if (evt.newValue == node.customPreview) 
+             return;
+         
+         node.customPreview = evt.newValue;
          
          if(serializedObject.FindProperty("customPreview").boolValue)
              serializedObject.FindProperty("TextPreview").stringValue = ""; 
@@ -58,6 +66,9 @@ namespace Editor.UIToolkit
 
      private void HandleDialogTextChanged(ChangeEvent<string> evt)
      {
+         // if (CustomPreview) 
+         //     return;
+         
          var previewText = CreatePreview(evt.newValue);
          
          if(!serializedObject.FindProperty("customPreview").boolValue)

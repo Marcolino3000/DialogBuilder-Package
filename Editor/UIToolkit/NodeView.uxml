@@ -8,7 +8,7 @@
                 <ui:VisualElement name="top" style="flex-grow: 1;">
                     <ui:VisualElement name="input" style="height: auto;" />
                     <ui:VisualElement name="divider" class="vertical" />
-                    <ui:VisualElement name="title" style="align-self: center; height: auto; -unity-text-align: middle-center; font-size: 3px; flex-grow: 0; flex-basis: 25px; min-height: auto; flex-shrink: 0; overflow: visible; margin-left: 50px;">
+                    <ui:VisualElement name="title" style="align-self: center; height: auto; -unity-text-align: middle-center; font-size: 3px; flex-grow: 0; flex-basis: 25px; min-height: auto; flex-shrink: 0; overflow: visible; margin-left: 60px;">
                         <ui:Label name="title-label" text="SequencerNode" class="unity-text-element unity-label" style="font-size: 12px; white-space: nowrap; flex-direction: column; flex-basis: auto; flex-shrink: 1; flex-grow: 1; text-overflow: clip; -unity-text-align: middle-left;" />
                         <ui:VisualElement name="title-button-container">
                             <ui:VisualElement name="collapse-button">
