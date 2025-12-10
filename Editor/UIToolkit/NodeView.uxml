@@ -5,13 +5,10 @@
         <ui:VisualElement name="contents" style="width: auto;">
             <ui:VisualElement name="divider" class="horizontal" />
             <ui:VisualElement name="HorizonzalContainer" style="flex-grow: 1; flex-direction: row; width: auto;">
-                <ui:VisualElement name="IconBackground" style="flex-grow: 0; background-image: url(&quot;project://database/Packages/com.cod.dialog-builder/Editor/Visuals/CharacterIconBackground.png?fileID=2800000&amp;guid=913d3e8c8a7b44fe2884cc97149fbb87&amp;type=3#CharacterIconBackground&quot;); border-top-left-radius: 128px; border-top-right-radius: 128px; border-bottom-right-radius: 128px; border-bottom-left-radius: 128px; flex-basis: 50px; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; flex-shrink: 0; width: auto; height: auto;">
-                    <ui:VisualElement name="CharacterIcon" style="flex-grow: 1; background-image: url(&quot;project://database/Packages/com.cod.dialog-builder/Editor/Visuals/Marlene.png?fileID=-1502613933&amp;guid=7de9a56e0237741dab0a6a9bbe99953e&amp;type=3#Marlene_0&quot;); flex-basis: auto; margin-top: 3px; margin-right: 3px; margin-bottom: 3px; margin-left: 3px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-top-left-radius: 128px; border-top-right-radius: 128px; border-bottom-right-radius: 128px; border-bottom-left-radius: 128px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.65); flex-shrink: 1;" />
-                </ui:VisualElement>
                 <ui:VisualElement name="top" style="flex-grow: 1;">
                     <ui:VisualElement name="input" style="height: auto;" />
                     <ui:VisualElement name="divider" class="vertical" />
-                    <ui:VisualElement name="title" style="align-self: center; height: auto; -unity-text-align: middle-center; font-size: 3px; flex-grow: 0; flex-basis: 25px; min-height: auto; flex-shrink: 0; overflow: visible;">
+                    <ui:VisualElement name="title" style="align-self: center; height: auto; -unity-text-align: middle-center; font-size: 3px; flex-grow: 0; flex-basis: 25px; min-height: auto; flex-shrink: 0; overflow: visible; margin-left: 50px;">
                         <ui:Label name="title-label" text="SequencerNode" class="unity-text-element unity-label" style="font-size: 12px; white-space: nowrap; flex-direction: column; flex-basis: auto; flex-shrink: 1; flex-grow: 1; text-overflow: clip; -unity-text-align: middle-left;" />
                         <ui:VisualElement name="title-button-container">
                             <ui:VisualElement name="collapse-button">
@@ -21,6 +18,9 @@
                     </ui:VisualElement>
                     <ui:TextField value="filler" picking-mode="Ignore" password="false" name="TextField" multiline="true" style="white-space: normal; -unity-text-align: middle-center; letter-spacing: 0; flex-wrap: wrap; flex-grow: 0; text-overflow: ellipsis; -unity-font-style: bold; justify-content: flex-start; visibility: visible; display: none;" />
                     <ui:VisualElement name="output" style="-unity-text-align: upper-left; align-self: auto;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="IconBackground" style="width: 55px; height: 55px; background-image: url(&quot;project://database/Assets/Plugins/Sirenix/Odin%20Inspector/Assets/Editor/SdfIconAtlas.png?fileID=2800000&amp;guid=2a0112a98875dfd488b5d10bdb8a4903&amp;type=3#SdfIconAtlas&quot;); border-top-left-radius: 120px; border-top-right-radius: 121px; border-bottom-right-radius: 103px; border-bottom-left-radius: 127px; position: absolute; margin-top: 1px; margin-right: 1px; margin-bottom: 1px; margin-left: 1px; background-color: rgba(42, 42, 42, 0.8);">
+                    <ui:VisualElement name="CharacterIcon" style="flex-grow: 0; background-image: url(&quot;project://database/Packages/com.cod.dialog-builder/Editor/Visuals/Marlene.png?fileID=-1502613933&amp;guid=7de9a56e0237741dab0a6a9bbe99953e&amp;type=3#Marlene_0&quot;); flex-basis: auto; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-top-left-radius: 128px; border-top-right-radius: 128px; border-bottom-right-radius: 128px; border-bottom-left-radius: 128px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.99); flex-shrink: 1; width: 50px; height: 50px;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

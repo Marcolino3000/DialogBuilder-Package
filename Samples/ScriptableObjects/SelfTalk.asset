@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Guid: 8600c2add69ff4b95ad424813a78d2fe
   Position: {x: 111.42966, y: -1364.3411}
+  customPreview: 0
   Blackboard:
     CharacterData: {fileID: 0}
   DialogLine: Monolog von Marlene
