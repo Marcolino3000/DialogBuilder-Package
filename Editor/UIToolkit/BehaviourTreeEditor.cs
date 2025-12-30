@@ -18,7 +18,7 @@ namespace Editor.UIToolkit
         private Vector3 _savedViewPosition;
         private Vector3 _savedViewScale = new(0.5f, 0.5f, 1);
 
-        [MenuItem("DialogTreeEditor/Editor...")]
+        [MenuItem("Tools/DialogBuilder")]
         public static void OpenWindow()
         {
             BehaviourTreeEditor wnd = GetWindow<BehaviourTreeEditor>();
