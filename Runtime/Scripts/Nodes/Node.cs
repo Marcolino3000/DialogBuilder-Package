@@ -14,7 +14,7 @@ namespace Nodes
         public Blackboard Blackboard;
         public string DialogLine;
         public string TextPreview;
-
+        public AudioClip AudioClip;
 
         public abstract List<DialogOptionNode> GetChildNodes();
 
