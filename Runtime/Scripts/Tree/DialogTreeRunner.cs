@@ -169,24 +169,27 @@ namespace Tree
             foreach (var paragraph in dialogOption.Paragraphs)
             {
                 if (dialogOption is PlayerDialogOption)
-                    yield return StartCoroutine(ShowParagraph("Marlene", paragraph));
+                    yield return StartCoroutine(ShowParagraph("Marlene", paragraph, dialogOption.AudioClip));
                 if (dialogOption is NpcDialogOption)
                 {
-                    yield return StartCoroutine(ShowParagraph(Tree.Blackboard.CharacterData.name, paragraph));
+                    yield return StartCoroutine(ShowParagraph(Tree.Blackboard.CharacterData.name, paragraph, dialogOption.AudioClip));
                 }
             }
 
             GetNextNode(dialogOption);
         }
-
-        private IEnumerator ShowParagraph(string characterName, Tuple<string, float> paragraph)
+        
+        private IEnumerator ShowParagraph(string characterName, Tuple<string, float> paragraph, AudioClip audioClip = null)
         {
             foreach (var receiver in _dialogReceivers)
             {
                 receiver.DisplayDialogLine(characterName, paragraph.Item1);
             }
             
-            yield return new WaitForSeconds(paragraph.Item2 * 1 / DialogBuilderHQ.dialogTextSpeed);
+            if (audioClip == null)
+                yield return new WaitForSeconds(paragraph.Item2 * 1 / DialogBuilderHQ.dialogTextSpeed);
+            else 
+                yield return new WaitForSeconds(audioClip.length); 
 
             // foreach (var receiver in _dialogReceivers)
             // {
