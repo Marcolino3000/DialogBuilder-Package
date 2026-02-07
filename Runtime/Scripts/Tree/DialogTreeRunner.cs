@@ -34,6 +34,8 @@ namespace Tree
         private bool _activateRandomPickWhenIdle;
         private float _timerUntilRandomPick = 2f;
         private Coroutine _currentIdleTimer;
+        private Coroutine currentCoroutine;
+        private DialogOptionNode currentDialogOption;
 
         public void StartIdleTimer()
         {
@@ -163,16 +165,40 @@ namespace Tree
                 }
             }
         }
+        
+        public void SkipToNextOption()
+        {
+            if(currentCoroutine == null)
+            {
+                Debug.Log("currentCoroutine was null, returning early");
+                return;
+            }
+            
+            StopCoroutine(currentCoroutine);
+            
+            GetNextNode(currentDialogOption);
+            
+        }
 
         private IEnumerator DisplayDialog(DialogOptionNode dialogOption)
-        {
+        { 
+            currentDialogOption = dialogOption;
+            
             foreach (var paragraph in dialogOption.Paragraphs)
             {
                 if (dialogOption is PlayerDialogOption)
-                    yield return StartCoroutine(ShowParagraph("Marlene", paragraph, dialogOption.PauseAfter, dialogOption.AudioClip));
+                {
+                    currentCoroutine = StartCoroutine(ShowParagraph("Marlene", paragraph, 
+                        dialogOption.PauseAfter, dialogOption.AudioClip));
+                    
+                    yield return currentCoroutine;
+                }
                 if (dialogOption is NpcDialogOption)
                 {
-                    yield return StartCoroutine(ShowParagraph(Tree.Blackboard.CharacterData.name, paragraph, dialogOption.PauseAfter, dialogOption.AudioClip));
+                    currentCoroutine = StartCoroutine(ShowParagraph(Tree.Blackboard.CharacterData.name, paragraph, 
+                        dialogOption.PauseAfter, dialogOption.AudioClip));
+
+                    yield return currentCoroutine;
                 }
             }
 
@@ -349,6 +375,8 @@ namespace Tree
             
             return allOptions.Where(n => n.IsAvailable).ToArray();
         }
+
+     
     }
     
     public static class CollectionExtensions

@@ -121,6 +121,9 @@ namespace Core
 
              if(GUILayout.Button("Start Dialog"))
                  treeRunner.StartDialog();
+             
+             if(GUILayout.Button("Skip To Next Option"))
+                 treeRunner.SkipToNextOption();
          }
     }
 }
