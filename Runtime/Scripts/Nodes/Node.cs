@@ -15,6 +15,7 @@ namespace Nodes
         public string DialogLine;
         public string TextPreview;
         public AudioClip AudioClip;
+        public float ClipVolume = 1f;
         public float PauseAfter = 0.5f;
 
         public abstract List<DialogOptionNode> GetChildNodes();
