@@ -12,6 +12,7 @@ namespace Core
         public event Action OnPopularityThresholdReached;
         
         public Sprite Icon;
+        public ScriptableObject Interactable;
         
         [Header("Runtime Data")]
         public int CurrentPopularity;
