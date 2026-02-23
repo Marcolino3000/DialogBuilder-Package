@@ -21,6 +21,7 @@ namespace Tree
         public Action<bool> OnDialogTreeFinished;
 
         [SerializeField] private CharacterDataManager characterDataManager;
+        [SerializeField] private MarkerManager markermanager;
 
         private List<IDialogReceiver> _dialogReceivers;
         private List<IDialogOptionReceiver> _dialogPresenters;
@@ -36,6 +37,7 @@ namespace Tree
         private Coroutine _currentIdleTimer;
         private Coroutine currentCoroutine;
         private DialogOptionNode currentDialogOption;
+        private int currentParagraphIndex;
 
         public void StartIdleTimer()
         {
@@ -181,29 +183,74 @@ namespace Tree
         }
 
         private IEnumerator DisplayDialog(DialogOptionNode dialogOption)
-        { 
+        {
             currentDialogOption = dialogOption;
+
+            var paragraphTimespans = markermanager.GetParagraphMarkerTimespans(dialogOption.AudioClip) ?? new List<float>();
+            var originalParagraphs = dialogOption.Paragraphs ?? new List<Tuple<string, float>>();
+            var paragraphStrings = originalParagraphs.Select(p => p.Item1).ToList();
+
+            if (paragraphStrings.Count != paragraphTimespans.Count)
+            {
+                Debug.LogWarning("Number of paragraphs and paragraph-markers did not match!");
+            }
             
-            foreach (var paragraph in dialogOption.Paragraphs)
+            var updatedParagraphs = paragraphStrings
+                .Zip(paragraphTimespans, (text, time) => Tuple.Create(text, time))
+                .ToList();
+
+            foreach (var paragraph in updatedParagraphs)
             {
                 if (dialogOption is PlayerDialogOption)
                 {
-                    currentCoroutine = StartCoroutine(ShowParagraph("Marlene", paragraph, 
-                        dialogOption.PauseAfter, dialogOption.AudioClip));
-                    
+                    currentCoroutine = StartCoroutine(ShowParagraph("Marlene", paragraph,
+                        dialogOption.PauseAfter));
                     yield return currentCoroutine;
                 }
-                if (dialogOption is NpcDialogOption)
+                else if (dialogOption is NpcDialogOption)
                 {
-                    currentCoroutine = StartCoroutine(ShowParagraph(Tree.Blackboard.CharacterData.name, paragraph, 
-                        dialogOption.PauseAfter, dialogOption.AudioClip));
-
+                    var characterName = Tree.Blackboard.CharacterData != null ? Tree.Blackboard.CharacterData.name : "NPC";
+                    currentCoroutine = StartCoroutine(ShowParagraph(characterName, paragraph,
+                        dialogOption.PauseAfter));
                     yield return currentCoroutine;
                 }
             }
 
             GetNextNode(dialogOption);
+        }   
+
+        private void DisplayNextParagraph(MarkerManager.MarkerType markerType)
+        {
+            if (markerType != MarkerManager.MarkerType.Paragraph) return;
+
+            currentParagraphIndex++;
+            
         }
+
+        // private IEnumerator DisplayDialog(DialogOptionNode dialogOption)
+        // { 
+        //     currentDialogOption = dialogOption;
+        //     
+        //     foreach (var paragraph in dialogOption.Paragraphs)
+        //     {
+        //         if (dialogOption is PlayerDialogOption)
+        //         {
+        //             currentCoroutine = StartCoroutine(ShowParagraph("Marlene", paragraph, 
+        //                 dialogOption.PauseAfter, dialogOption.AudioClip));
+        //             
+        //             yield return currentCoroutine;
+        //         }
+        //         if (dialogOption is NpcDialogOption)
+        //         {
+        //             currentCoroutine = StartCoroutine(ShowParagraph(Tree.Blackboard.CharacterData.name, paragraph, 
+        //                 dialogOption.PauseAfter, dialogOption.AudioClip));
+        //
+        //             yield return currentCoroutine;
+        //         }
+        //     }
+        //
+        //     GetNextNode(dialogOption);
+        // }
         
         private IEnumerator ShowParagraph(string characterName, Tuple<string, float> paragraph,
             float pauseAfterDialogOption, AudioClip audioClip = null)

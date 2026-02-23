@@ -2,7 +2,8 @@
     "name": "cod.dialogbuilder",
     "rootNamespace": "",
     "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:f658efd66cf1847239955bbdac42f6d6"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
