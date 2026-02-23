@@ -186,6 +186,21 @@ namespace Tree
         {
             currentDialogOption = dialogOption;
 
+            if(dialogOption.AudioClip != null)
+            {
+                yield return StartCoroutine(DisplayParagraphsUsingDurationsFromMarkers(dialogOption));
+            }
+
+            else
+            {
+                yield return StartCoroutine(DisplayParagraphsUsingDurationBasedOnTextLength(dialogOption));
+            }
+
+            GetNextNode(dialogOption);
+        }
+
+        private IEnumerator DisplayParagraphsUsingDurationsFromMarkers(DialogOptionNode dialogOption)
+        {
             var paragraphTimespans = markermanager.GetParagraphMarkerTimespans(dialogOption.AudioClip) ?? new List<float>();
             var originalParagraphs = dialogOption.Paragraphs ?? new List<Tuple<string, float>>();
             var paragraphStrings = originalParagraphs.Select(p => p.Item1).ToList();
@@ -194,76 +209,62 @@ namespace Tree
             {
                 Debug.LogWarning("Number of paragraphs and paragraph-markers did not match!");
             }
-            
+
             var updatedParagraphs = paragraphStrings
                 .Zip(paragraphTimespans, (text, time) => Tuple.Create(text, time))
                 .ToList();
 
-            foreach (var paragraph in updatedParagraphs)
+            for (var index = 0; index < updatedParagraphs.Count; index++)
             {
+                var paragraph = updatedParagraphs[index];
+                
+                if(index == updatedParagraphs.Count - 1)
+                    paragraph = Tuple.Create(paragraph.Item1, paragraph.Item2 + dialogOption.PauseAfter);
+                
                 if (dialogOption is PlayerDialogOption)
                 {
-                    currentCoroutine = StartCoroutine(ShowParagraph("Marlene", paragraph,
-                        dialogOption.PauseAfter));
+                    currentCoroutine = StartCoroutine(ShowParagraph("Marlene", paragraph));
                     yield return currentCoroutine;
                 }
                 else if (dialogOption is NpcDialogOption)
                 {
-                    var characterName = Tree.Blackboard.CharacterData != null ? Tree.Blackboard.CharacterData.name : "NPC";
-                    currentCoroutine = StartCoroutine(ShowParagraph(characterName, paragraph,
-                        dialogOption.PauseAfter));
+                    var characterName = Tree.Blackboard.CharacterData != null
+                        ? Tree.Blackboard.CharacterData.name
+                        : "NPC";
+                    currentCoroutine = StartCoroutine(ShowParagraph(characterName, paragraph));
                     yield return currentCoroutine;
                 }
             }
+        }
+        
 
-            GetNextNode(dialogOption);
-        }   
-
-        private void DisplayNextParagraph(MarkerManager.MarkerType markerType)
+        private IEnumerator DisplayParagraphsUsingDurationBasedOnTextLength(DialogOptionNode dialogOption)
         {
-            if (markerType != MarkerManager.MarkerType.Paragraph) return;
+            foreach (var paragraph in dialogOption.Paragraphs)
+            {
+                if (dialogOption is PlayerDialogOption)
+                {
+                    currentCoroutine = StartCoroutine(ShowParagraph("Marlene", paragraph));
 
-            currentParagraphIndex++;
-            
+                    yield return currentCoroutine;
+                }
+                if (dialogOption is NpcDialogOption)
+                {
+                    currentCoroutine = StartCoroutine(ShowParagraph(Tree.Blackboard.CharacterData.name, paragraph));
+
+                    yield return currentCoroutine;
+                }
+            }
         }
 
-        // private IEnumerator DisplayDialog(DialogOptionNode dialogOption)
-        // { 
-        //     currentDialogOption = dialogOption;
-        //     
-        //     foreach (var paragraph in dialogOption.Paragraphs)
-        //     {
-        //         if (dialogOption is PlayerDialogOption)
-        //         {
-        //             currentCoroutine = StartCoroutine(ShowParagraph("Marlene", paragraph, 
-        //                 dialogOption.PauseAfter, dialogOption.AudioClip));
-        //             
-        //             yield return currentCoroutine;
-        //         }
-        //         if (dialogOption is NpcDialogOption)
-        //         {
-        //             currentCoroutine = StartCoroutine(ShowParagraph(Tree.Blackboard.CharacterData.name, paragraph, 
-        //                 dialogOption.PauseAfter, dialogOption.AudioClip));
-        //
-        //             yield return currentCoroutine;
-        //         }
-        //     }
-        //
-        //     GetNextNode(dialogOption);
-        // }
-        
-        private IEnumerator ShowParagraph(string characterName, Tuple<string, float> paragraph,
-            float pauseAfterDialogOption, AudioClip audioClip = null)
+        private IEnumerator ShowParagraph(string characterName, Tuple<string, float> paragraph)
         {
             foreach (var receiver in _dialogReceivers)
             {
                 receiver.DisplayDialogLine(characterName, paragraph.Item1);
             }
             
-            if (audioClip == null)
-                yield return new WaitForSeconds(paragraph.Item2 * 1 / DialogBuilderHQ.dialogTextSpeed);
-            else 
-                yield return new WaitForSeconds(audioClip.length + pauseAfterDialogOption); 
+            yield return new WaitForSeconds(paragraph.Item2 * 1 / DialogBuilderHQ.dialogTextSpeed);
 
             // foreach (var receiver in _dialogReceivers)
             // {
