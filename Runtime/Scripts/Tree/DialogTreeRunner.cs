@@ -264,7 +264,7 @@ namespace Tree
                 receiver.DisplayDialogLine(characterName, paragraph.Item1);
             }
             
-            yield return new WaitForSeconds(paragraph.Item2 * 1 / DialogBuilderHQ.dialogTextSpeed);
+            yield return new WaitForSeconds(paragraph.Item2);
 
             // foreach (var receiver in _dialogReceivers)
             // {
