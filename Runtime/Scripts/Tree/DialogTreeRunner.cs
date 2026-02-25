@@ -83,7 +83,9 @@ namespace Tree
             }
 
             _fallThroughNodes = new List<DialogOptionNode>();
-            CurrentNodes = SetOptionType(Tree.GetStartingNodes());
+            
+            if(Tree != null)
+                CurrentNodes = SetOptionType(Tree.GetStartingNodes());
         }
 
         public void StartDialog()
