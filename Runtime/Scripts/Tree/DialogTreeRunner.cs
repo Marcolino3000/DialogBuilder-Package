@@ -108,6 +108,8 @@ namespace Tree
                 OnDialogRunningStatusChanged?.Invoke(false, Tree);
                 CurrentNodes = SetOptionType(Tree.GetStartingNodes());
             }
+
+            Tree = null;
             // ExecuteCurrentNodes();
         }
 
