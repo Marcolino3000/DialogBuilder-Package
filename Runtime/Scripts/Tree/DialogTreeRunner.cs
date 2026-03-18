@@ -96,14 +96,18 @@ namespace Tree
         public void Reset()
         {
             IsDialogRunning = false;
-            OnDialogRunningStatusChanged?.Invoke(false, Tree);
+
             OnDialogTreeFinished?.Invoke(false);
             OnDialogTreeFinished = null;
             StopAllCoroutines();
 
             HideDialog();
 
-            CurrentNodes = SetOptionType(Tree.GetStartingNodes());
+            if(Tree != null)
+            {
+                OnDialogRunningStatusChanged?.Invoke(false, Tree);
+                CurrentNodes = SetOptionType(Tree.GetStartingNodes());
+            }
             // ExecuteCurrentNodes();
         }
 
@@ -391,6 +395,7 @@ namespace Tree
                 IsDialogRunning = false;
                 OnDialogTreeFinished?.Invoke(true);
                 OnDialogTreeFinished = null;
+                Tree = null;
                 return;
             }
             
