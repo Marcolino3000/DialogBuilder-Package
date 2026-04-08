@@ -16,18 +16,18 @@ namespace Core
         [SerializeField] private bool showOptions;
         public static float dialogTextSpeed = 1f;
         [SerializeField] public float _dialogTextSpeed = 1f;
-        private float test;
-        
+        [SerializeField] private bool showDebugButtons;
         [Tooltip("Pick a random option when no option is selected within time span.")]
         [SerializeField] private bool randomPick;
         [SerializeField] private float timerUntilRandomPick = 5f;
-        
+
         [SerializeField] private DialogOptionPresenter dialogOptionPresenter;
         [SerializeField] private DecisionHandler decisionHandler;
         [SerializeField] private SubtitlePresenter subtitlePresenter;
         [SerializeField] private DialogTreeRunner treeRunner;
-        
-        
+
+        private float test;
+
         private void Start()
         {
             FindClients();
@@ -112,7 +112,10 @@ namespace Core
         }
         
         private void OnGUI()
-         {
+        {
+            if (!showDebugButtons)
+                return;
+            
              dialogTextSpeed = GUILayout.HorizontalSlider(dialogTextSpeed, 0.7f, 5.0f);
              GUILayout.Label("Text speed: " + dialogTextSpeed, GUILayout.ExpandHeight(false), GUILayout.ExpandWidth(false), GUILayout.Width(130) , GUILayout.Height(20));
 
