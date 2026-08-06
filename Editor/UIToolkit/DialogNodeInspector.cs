@@ -31,15 +31,30 @@ namespace Editor.UIToolkit
          DialogText.Bind(serializedObject);
          DialogText.RegisterValueChangedCallback(HandleDialogTextChanged);
 
+         var EnglishTextFieldLabel = new Label("English Text:");
+         var EnglishText = new TextField()
+         {
+             multiline = true,
+         };
+
+         EnglishText.style.whiteSpace = WhiteSpace.Normal;
+         EnglishText.bindingPath = "DialogLineEn";
+         EnglishText.Bind(serializedObject);
+
+         // No preview callback on purpose: node names and the graph preview stay derived from the
+         // German line, so the tree looks the same whether or not a node has been translated yet.
+
          var customPreviewToggle = new Toggle("Custom Preview");
          customPreviewToggle.bindingPath = "customPreview";
          customPreviewToggle.Bind(serializedObject);
-         
+
          customPreviewToggle.RegisterValueChangedCallback(HandleCustomPreviewToggleChanged);
-         
+
          root.Add(customPreviewToggle);
          root.Add(DialogTextFieldLabel);
          root.Add(DialogText);
+         root.Add(EnglishTextFieldLabel);
+         root.Add(EnglishText);
 
          return root;
      }

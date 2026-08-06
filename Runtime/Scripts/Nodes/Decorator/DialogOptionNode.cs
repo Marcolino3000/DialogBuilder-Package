@@ -22,23 +22,32 @@ namespace Nodes.Decorator
 
         private void OnEnable()
         {
+            // Nodes can be unloaded and reloaded between scenes, so one that arrives after the
+            // language was picked still has to build its own paragraphs.
             CreateParagraphs();
         }
 
-        private void CreateParagraphs()
+        /// <summary>
+        /// Builds the paragraphs from the line in the current language. Called on load, and again
+        /// for every loaded node whenever <see cref="Node.CurrentLanguage"/> is assigned.
+        /// </summary>
+        public void CreateParagraphs()
         {
-            if(string.IsNullOrWhiteSpace(DialogLine))
+            // The list is reused instead of replaced so callers holding a reference keep seeing the
+            // current text. Clearing first also keeps a second OnEnable from doubling every paragraph.
+            Paragraphs.Clear();
+
+            var line = LocalizedLine;
+
+            if(string.IsNullOrWhiteSpace(line))
                 return;
-            
-            var paragraphs = DialogLine.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            
-            // if(paragraphs.Length == 0)
-            //     return;
-            
+
+            var paragraphs = line.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
             foreach (var paragraph in paragraphs)
             {
                  Paragraphs.Add(new Tuple<string, float>(
-                     paragraph, 
+                     paragraph,
                      paragraph.Length * 0.06f + 0.8f));
             }
         }

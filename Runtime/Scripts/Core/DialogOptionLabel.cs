@@ -18,7 +18,7 @@ namespace Core
         public void Setup(PlayerDialogOption node)
         {
             _node = node;
-            _textField.text = node.DialogLine;
+            _textField.text = node.LocalizedLine;
 
             switch (node.Type)
             {
