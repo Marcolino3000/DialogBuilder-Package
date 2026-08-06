@@ -46,10 +46,6 @@ namespace Tree
             if (!Input.GetMouseButtonDown(0))
                 return;
 
-            // Klick auf eine Sprechblase wählt eine Option aus - der darf nicht zusätzlich skippen
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-                return;
-
             if (!IsDialogRunning || !_isDisplayingDialogOption)
                 return;
 
