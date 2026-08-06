@@ -6,6 +6,7 @@ using Core;
 using Nodes;
 using Nodes.Decorator;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Tree
 {
@@ -38,6 +39,22 @@ namespace Tree
         private Coroutine currentCoroutine;
         private DialogOptionNode currentDialogOption;
         private int currentParagraphIndex;
+        private bool _isDisplayingDialogOption;
+
+        private void Update()
+        {
+            if (!Input.GetMouseButtonDown(0))
+                return;
+
+            // Klick auf eine Sprechblase wählt eine Option aus - der darf nicht zusätzlich skippen
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return;
+
+            if (!IsDialogRunning || !_isDisplayingDialogOption)
+                return;
+
+            SkipToNextOption();
+        }
 
         public void StartIdleTimer()
         {
@@ -96,6 +113,7 @@ namespace Tree
         public void Reset()
         {
             IsDialogRunning = false;
+            _isDisplayingDialogOption = false;
 
             OnDialogTreeFinished?.Invoke(false);
             OnDialogTreeFinished = null;
@@ -185,14 +203,17 @@ namespace Tree
             }
             
             StopCoroutine(currentCoroutine);
-            
+
+            _isDisplayingDialogOption = false;
+
             GetNextNode(currentDialogOption);
-            
+
         }
 
         private IEnumerator DisplayDialog(DialogOptionNode dialogOption)
         {
             currentDialogOption = dialogOption;
+            _isDisplayingDialogOption = true;
 
             if(dialogOption.AudioClip != null)
             {
@@ -203,6 +224,8 @@ namespace Tree
             {
                 yield return StartCoroutine(DisplayParagraphsUsingDurationBasedOnTextLength(dialogOption));
             }
+
+            _isDisplayingDialogOption = false;
 
             GetNextNode(dialogOption);
         }
