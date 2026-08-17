@@ -24,6 +24,10 @@ namespace Tree
         [SerializeField] private CharacterDataManager characterDataManager;
         [SerializeField] private MarkerManager markermanager;
 
+        [Header("Skip")]
+        [SerializeField] private bool skipWithMouseClick = true;
+        [SerializeField] private bool skipWithSpacebar = true;
+
         private List<IDialogReceiver> _dialogReceivers;
         private List<IDialogOptionReceiver> _dialogPresenters;
         private List<IDialogStarter> _dialogStarters;
@@ -40,13 +44,22 @@ namespace Tree
         private DialogOptionNode currentDialogOption;
         private int currentParagraphIndex;
         private bool _isDisplayingDialogOption;
+        private int _frameOptionStartedDisplaying = -1;
 
         private void Update()
         {
-            if (!Input.GetMouseButtonDown(0))
+            var skipRequested = (skipWithMouseClick && Input.GetMouseButtonDown(0))
+                                || (skipWithSpacebar && Input.GetKeyDown(KeyCode.Space));
+
+            if (!skipRequested)
                 return;
 
             if (!IsDialogRunning || !_isDisplayingDialogOption)
+                return;
+
+            // Der Klick, der die Option gestartet hat (Interaktion oder Auswahl), liegt im selben
+            // Frame und würde sie sonst sofort wieder überspringen.
+            if (Time.frameCount == _frameOptionStartedDisplaying)
                 return;
 
             SkipToNextOption();
@@ -210,6 +223,7 @@ namespace Tree
         {
             currentDialogOption = dialogOption;
             _isDisplayingDialogOption = true;
+            _frameOptionStartedDisplaying = Time.frameCount;
 
             if(dialogOption.AudioClip != null)
             {
